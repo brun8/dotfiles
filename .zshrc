@@ -109,4 +109,7 @@ alias chrome="open -a \"Google Chrome\""
 alias hyperconfig="nvim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 
+alias p3="/usr/bin/python3"
+source "/etc/profile.d/rvm.sh"
+
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
