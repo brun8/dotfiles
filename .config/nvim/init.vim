@@ -21,6 +21,8 @@ Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
+inoremap {<CR> {<CR>}<ESC>O
+
 " tab e shift tab navegam pelo autocomplete
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
