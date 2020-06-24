@@ -17,6 +17,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ddollar/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
