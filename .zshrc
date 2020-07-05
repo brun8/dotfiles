@@ -99,7 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 
 # ALIASES
 
@@ -113,3 +112,6 @@ alias p3="/usr/bin/python3"
 source "/etc/profile.d/rvm.sh"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
