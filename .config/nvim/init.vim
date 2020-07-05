@@ -18,10 +18,20 @@ Plug 'ddollar/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'
 Plug 'pangloss/vim-javascript'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
 inoremap {<CR> {<CR>}<ESC>O
+
+" fzf
+set rtp+=~/.fzf
+nnoremap <silent> <C-p> :FZF -m<cr>
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+
 
 " tab e shift tab navegam pelo autocomplete
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -44,6 +54,7 @@ let g:lightline = {
 " NERDTree
 " Bind CTRL N pra abrir o nerdtree
 map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeMinimalUI = 1
 
 " muda o dir atual para o dir do arquivo aberto
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
@@ -75,6 +86,11 @@ set ttimeoutlen=100
 
 " mapeando jj pra fazer a função do esc
 inoremap jj <esc>
+
+" linha nova entre {[( e )]}
+inoremap {<CR> {<CR>}<Esc>ko
+inoremap [<CR> [<CR>]<Esc>ko
+inoremap (<CR> (<CR>)<Esc>ko
 
 " bind pra mudar de split
 nnoremap <C-J> <C-W><C-J>
