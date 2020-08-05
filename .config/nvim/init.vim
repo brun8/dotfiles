@@ -15,14 +15,15 @@ Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ddollar/nerdcommenter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sbdchd/neoformat'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 call plug#end()
 
-inoremap {<CR> {<CR>}<ESC>O
+command! -nargs=0 Format :call CocAction('format')
+
 
 " fzf
 set rtp+=~/.fzf
@@ -33,15 +34,13 @@ let g:fzf_action = {
       \ }
 
 
+" coc
 " tab e shift tab navegam pelo autocomplete
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " carriage return confirma o autocomplete
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" prettier (java formatter)
-autocmd BufWritePre *.js Neoformat
 
 
 " lightline
@@ -56,8 +55,13 @@ let g:lightline = {
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMinimalUI = 1
 
-" muda o dir atual para o dir do arquivo aberto
-autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
+
+" emmet
+let g:user_emmet_leader_key='<C-e>'
+
+
+" linha nova entre chaves
+inoremap {<CR> {<CR>}<ESC>O
 
 
 "tamanho da identaçao
