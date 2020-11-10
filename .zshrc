@@ -97,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # ALIASES
@@ -105,8 +105,8 @@ alias zshconfig="nvim ~/.zshrc"
 alias python=python3
 alias vimconfig="vim ~/.vimrc"
 alias chrome="open -a \"Google Chrome\""
-alias hyperconfig="nvim ~/.hyper.js"
-alias nvimconfig="nvim ~/.config/nvim/init.vim"
+alias hyperconfig="vim ~/.hyper.js"
+alias nvimconfig="vim ~/.config/nvim/init.vim"
 
 alias p3="/usr/bin/python3"
 
