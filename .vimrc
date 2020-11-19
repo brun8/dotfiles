@@ -14,7 +14,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ddollar/nerdcommenter'
 Plug 'sbdchd/neoformat'
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
@@ -35,7 +35,7 @@ let g:lightline = {
 map <C-n> :NERDTreeToggle<CR>
 
 " muda o dir atual para o dir do arquivo aberto
-autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
+" autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
 
 "tamanho da identaçao
@@ -72,4 +72,4 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-W> <C-W><C-W>
 nnoremap <leader>w <C-W><C-W>
- 
+nmap <C-P> :FZF<CR> 

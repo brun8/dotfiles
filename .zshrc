@@ -109,9 +109,9 @@ alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="vim ~/.config/nvim/init.vim"
 
 alias p3="/usr/bin/python3"
+alias rm=trash
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
