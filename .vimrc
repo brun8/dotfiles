@@ -13,17 +13,12 @@ Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
-Plug 'sbdchd/neoformat'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
 
 call plug#end()
-
-
-" prettier (javascript formatter)
-autocmd BufWritePre *.js Neoformat
 
 
 " lightline
