@@ -14,7 +14,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'pangloss/vim-javascript'
 
 
 
@@ -31,6 +33,7 @@ let g:lightline = {
 " NERDTree
 " Bind CTRL N pra abrir o nerdtree
 map <C-n> :NERDTreeToggle<CR>
+
 
 " muda o dir atual para o dir do arquivo aberto
 " autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
@@ -60,8 +63,7 @@ set splitright
 
 set ttimeoutlen=100
 
-" mapeando jj pra fazer a função do esc
-inoremap jj <esc>
+inoremap <C-c> <esc>
 
 " bind pra mudar de split
 nnoremap <C-J> <C-W><C-J>
@@ -70,4 +72,5 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-W> <C-W><C-W>
 nnoremap <leader>w <C-W><C-W>
+nnoremap <leader>t gt
 nmap <C-P> :FZF<CR> 

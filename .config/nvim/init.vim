@@ -1,5 +1,3 @@
-" UBUNTU NVIM CONFIG
-
 " vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -7,99 +5,84 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"plugins
+" plugins
 call plug#begin()
 
-Plug 'raimondi/delimitmate'
-Plug 'mattn/emmet-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'ddollar/nerdcommenter'
-Plug 'pangloss/vim-javascript'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'mbbill/undotree'
+Plug 'preservim/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'machakann/vim-sandwich'
 
 
 call plug#end()
 
-command! -nargs=0 Format :call CocAction('format')
+" ***** OPTIONS *****
 
+" text
+set nowrap
+set ignorecase
+set smartcase
+set scrolloff=8
 
-" fzf
-set rtp+=~/.fzf
-nnoremap <silent> <C-p> :FZF -m<cr>
-let g:fzf_action = {
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit'
-      \ }
-
-
-" coc
-" tab e shift tab navegam pelo autocomplete
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" carriage return confirma o autocomplete
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-
-" lightline
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ }
-
-
-" NERDTree
-" Bind CTRL N pra abrir o nerdtree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeMinimalUI = 1
-
-
-" emmet
-let g:user_emmet_leader_key='<C-e>'
-
-
-" linha nova entre chaves
-inoremap {<CR> {<CR>}<ESC>O
-
-
-"tamanho da identaçao
-"identaçao do tamanho do TAB
-set tabstop=2
+" tabs
+set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
-set softtabstop=2
+set smartindent
 
-"colore o editor
-set background=dark
-syntax on
+" numbers
+set nu
+set relativenumber
 
-"comportamento usual do backspace
-set backspace=2
+" search
+set nohlsearch
+set incsearch
 
-"numerador de linhas
-set number
-set rnu
+" buffers
+set hidden
+set noswapfile
+set signcolumn=yes
 
-"split pra direita
-set splitright
+" colors
+" set termguicolors
 
 
-set ttimeoutlen=100
 
-" mapeando jj pra fazer a função do esc
-inoremap jj <esc>
 
-" linha nova entre {[( e )]}
-inoremap {<CR> {<CR>}<Esc>ko
-inoremap [<CR> [<CR>]<Esc>ko
-inoremap (<CR> (<CR>)<Esc>ko
+set noerrorbells
 
-" bind pra mudar de split
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-W> <C-W><C-W>
-nnoremap <leader>w <C-W><C-W>
+
+" ***** END OPTIONS *****
+
+" bindings
+
+let mapleader = " "
+
+inoremap <C-c> <esc>
+
+" telescope
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep for > ')})<CR>
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" undotree
+nnoremap <leader>u :UndotreeToggle<CR>
+
+fun! TrimWhiteSpace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+endfun
+
+" erases all trailing white spaces from all file types
+augroup bruno
+  autocmd!
+  autocmd BufWritePre * :call TrimWhiteSpace()
+augroup END
+
+

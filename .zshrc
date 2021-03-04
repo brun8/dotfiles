@@ -107,7 +107,7 @@ alias python=python3
 alias vimconfig="vim ~/.vimrc"
 alias chrome="open -a \"Google Chrome\""
 alias hyperconfig="vim ~/.hyper.js"
-alias nvimconfig="vim ~/.config/nvim/init.vim"
+alias nvimconfig="nvim ~/.config/nvim/init.vim"
 
 alias p3="/usr/bin/python3"
 alias rm=trash
@@ -119,4 +119,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended"
 
