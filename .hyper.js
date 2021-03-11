@@ -4,23 +4,10 @@
 
 module.exports = {
   config: {
-    MaterialTheme: {
-      // Set the theme variant,
-      // OPTIONS: 'Darker', 'Palenight', 'Ocean', ''
-      theme: 'Ocean',
-  
-      // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
-      // OPTIONS: From 0.1 to 1
-      backgroundOpacity: '1',
-  
-      // [Optional] Set the accent color for the current active tab
-      accentColor: '#64FFDA',
-
-      // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
-      // OPTIONS: 'dark', 'ultra-dark', 'bright'
-      // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
-      vibrancy: 'dark'
-  },
+    gruvboxTheme: {
+        style: 'dark',
+        contrast: 'hard'
+    },
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
@@ -164,7 +151,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hypercwd", "hyper-dracula"],
+  plugins: ["hypercwd", "hyper-gruvbox"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

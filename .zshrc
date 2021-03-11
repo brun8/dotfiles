@@ -70,7 +70,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 		git
-        zsh-autosuggestions
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -108,9 +107,8 @@ alias vimconfig="vim ~/.vimrc"
 alias chrome="open -a \"Google Chrome\""
 alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
-
-alias p3="/usr/bin/python3"
 alias rm=trash
+alias grandef="cd ~/cc/cjr/grandef"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
