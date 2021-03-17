@@ -1,5 +1,7 @@
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if empty(glob('~/.local/share/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
 endif
 
 " plugins
@@ -22,9 +24,10 @@ Plug 'machakann/vim-sandwich'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'mattn/emmet-vim'
+Plug 'itchyny/lightline.vim'
 
 
-Plug 'ThePrimeagen/harpoon'
+"Plug 'ThePrimeagen/harpoon'
 
 " colorschemes
 Plug 'nanotech/jellybeans.vim'
@@ -73,9 +76,10 @@ set termguicolors
 " GRUVBOX
 set background=dark
 let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+"colorscheme gruvbox
 
 
+colorscheme edge
 
 
 
@@ -83,9 +87,9 @@ colorscheme gruvbox
 
 " LSP
 lua require'lspconfig'.pyright.setup{}
+lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.solargraph.setup{}
-lua local on_attach = require'completion'.on_attach
-lua require'lspconfig'.tsserver.setup{ on_attach=on_attach }
+"lua local on_attach = require'completion'.on_attach
 
 " bindings
 
@@ -111,6 +115,13 @@ nmap <leader>tu :call GotoBuffer(0)<CR>
 nmap <leader>te :call GotoBuffer(1)<CR>
 nmap <leader>to :call GotoBuffer(2)<CR>
 nmap <leader>ta :call GotoBuffer(3)<CR>
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'edge',
+      \ }
+
+
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>

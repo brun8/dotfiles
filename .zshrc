@@ -103,12 +103,14 @@ alias zshconfig="vim ~/.zshrc"
 # ALIASES
 
 alias python=python3
+alias pytohn=python
 alias vimconfig="vim ~/.vimrc"
 alias chrome="open -a \"Google Chrome\""
 alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
-alias rm=trash
+# alias rm=trash
 alias grandef="cd ~/cc/cjr/grandef"
+alias sourcez="source ~/.zshrc"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
