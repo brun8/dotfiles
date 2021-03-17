@@ -69,8 +69,7 @@ set noerrorbells
 
 " colors
 set termguicolors
-
-
+"set t_Co=256
 
 
 " GRUVBOX
@@ -81,15 +80,16 @@ let g:gruvbox_contrast_dark='hard'
 
 colorscheme edge
 
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 
 " ***** END OPTIONS *****
 
 " LSP
-lua require'lspconfig'.pyright.setup{}
-lua require'lspconfig'.tsserver.setup{}
-lua require'lspconfig'.solargraph.setup{}
-"lua local on_attach = require'completion'.on_attach
+lua local on_attach = require'completion'.on_attach
+lua require'lspconfig'.tsserver.setup{ on_attach=on_attach }
+lua require'lspconfig'.solargraph.setup{ on_attach=on_attach }
+lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
 
 " bindings
 
@@ -145,4 +145,3 @@ augroup bruno
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
 
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
