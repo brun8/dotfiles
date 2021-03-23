@@ -108,7 +108,7 @@ alias vimconfig="vim ~/.vimrc"
 alias chrome="open -a \"Google Chrome\""
 alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
-# alias rm=trash
+alias rm=trash
 alias grandef="cd ~/cc/cjr/grandef"
 alias sourcez="source ~/.zshrc"
 

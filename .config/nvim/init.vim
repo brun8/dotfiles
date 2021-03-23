@@ -21,18 +21,21 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-sandwich'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+
 Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 
 
-"Plug 'ThePrimeagen/harpoon'
+Plug 'ThePrimeagen/harpoon'
 
 " colorschemes
 Plug 'nanotech/jellybeans.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/edge'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 " ***** OPTIONS *****
@@ -72,13 +75,21 @@ set termguicolors
 "set t_Co=256
 
 
-" GRUVBOX
 set background=dark
-let g:gruvbox_contrast_dark='hard'
+
+" GRUVBOX
+"let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 
+" Edge
+"colorscheme edge
 
-colorscheme edge
+" ayu
+"let ayucolor='dark'
+"let ayucolor='light'
+let ayucolor='mirage'
+colorscheme ayu
+
 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
@@ -86,12 +97,19 @@ lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 " ***** END OPTIONS *****
 
 " LSP
-lua local on_attach = require'completion'.on_attach
-lua require'lspconfig'.tsserver.setup{ on_attach=on_attach }
-lua require'lspconfig'.solargraph.setup{ on_attach=on_attach }
-lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" bindings
+set completeopt=menuone,noinsert,noselect
+
+lua local on_attach = require'completion'.on_attach
+lua require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
+"lua require'lspconfig'.tsserver.setup{ on_attach=on_attach }
+"lua require'lspconfig'.solargraph.setup{ on_attach=on_attach }
+"lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
+
 
 let mapleader = " "
 
@@ -111,10 +129,17 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " harpoon
-nmap <leader>tu :call GotoBuffer(0)<CR>
-nmap <leader>te :call GotoBuffer(1)<CR>
-nmap <leader>to :call GotoBuffer(2)<CR>
-nmap <leader>ta :call GotoBuffer(3)<CR>
+nnoremap <C-i> :lua require("harpoon.mark").add_file()<CR>
+nnoremap <C-x> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <C-g> :lua require("harpoon.mark").rm_file()<CR>
+nnoremap <leader>r :lua require("harpoon.mark").promote()<CR>
+nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
+
+nnoremap <leader>dd :lua vim.lsp.buf.definition()<CR>
 
 " lightline
 let g:lightline = {
@@ -126,9 +151,16 @@ let g:lightline = {
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
 
+" netrw
+let g:netrw_browse_split = 0
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_localrmdir='rm -r'
+nnoremap <leader>nn :Explore<CR>
+nnoremap <leader>bd :bd<CR>
+
 " nerdtree
-nnoremap <C-n> :NERDTreeToggle<CR>
-nmap <silent> <C-m> :NERDTreeFind<CR>
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -144,4 +176,6 @@ augroup bruno
   autocmd!
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
+
+nnoremap <CR> :lua print("let's go pens")<CR>
 
