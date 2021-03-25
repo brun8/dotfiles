@@ -9,7 +9,6 @@ call plug#begin()
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -30,6 +29,7 @@ Plug 'itchyny/lightline.vim'
 
 
 Plug 'ThePrimeagen/harpoon'
+Plug 'ThePrimeagen/neovim-irc-ui'
 
 " colorschemes
 Plug 'nanotech/jellybeans.vim'
@@ -102,7 +102,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 set completeopt=menuone,noinsert,noselect
 
-lua local on_attach = require'completion'.on_attach
+lua on_attach = require'completion'.on_attach
 lua require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
 lua require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
 lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
@@ -113,13 +113,6 @@ lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
 
 let mapleader = " "
 
-inoremap <C-c> <esc>
-
-" clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
-
 " telescope
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep for > ')})<CR>
 nnoremap <C-p> <cmd>Telescope git_files<cr>
@@ -129,6 +122,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " harpoon
+lua require("harpoon").setup()
 nnoremap <C-i> :lua require("harpoon.mark").add_file()<CR>
 nnoremap <C-x> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
@@ -136,7 +130,6 @@ nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <C-g> :lua require("harpoon.mark").rm_file()<CR>
-nnoremap <leader>r :lua require("harpoon.mark").promote()<CR>
 nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
 
 nnoremap <leader>dd :lua vim.lsp.buf.definition()<CR>
@@ -178,4 +171,6 @@ augroup bruno
 augroup END
 
 nnoremap <CR> :lua print("let's go pens")<CR>
+
+lua require('bruno')
 
