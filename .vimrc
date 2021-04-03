@@ -34,11 +34,6 @@ let g:lightline = {
 " Bind CTRL N pra abrir o nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
-
-" muda o dir atual para o dir do arquivo aberto
-" autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
-
-
 "tamanho da identaçao
 "identaçao do tamanho do TAB
 set tabstop=4

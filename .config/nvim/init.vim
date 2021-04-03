@@ -32,10 +32,14 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/neovim-irc-ui'
 
 " colorschemes
-Plug 'nanotech/jellybeans.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/edge'
 Plug 'ayu-theme/ayu-vim'
+Plug 'ghifarit53/tokyonight-vim'
+
+
+
+Plug 'alec-gibson/nvim-tetris'
 
 call plug#end()
 " ***** OPTIONS *****
@@ -85,10 +89,14 @@ set background=dark
 "colorscheme edge
 
 " ayu
-"let ayucolor='dark'
-"let ayucolor='light'
-let ayucolor='mirage'
-colorscheme ayu
+"let ayucolor='mirage'
+"colorscheme ayu
+
+" tokyonight
+colorscheme tokyonight
+
+
+lua require('bruno')
 
 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
@@ -102,18 +110,18 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 set completeopt=menuone,noinsert,noselect
 
-lua on_attach = require'completion'.on_attach
-lua require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
-lua require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
-lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
-"lua require'lspconfig'.tsserver.setup{ on_attach=on_attach }
-"lua require'lspconfig'.solargraph.setup{ on_attach=on_attach }
-"lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
 
 
 let mapleader = " "
 
-" telescope
+" splits
+nnoremap <A-l> :wincmd l<CR>
+nnoremap <A-k> :wincmd k<CR>
+nnoremap <A-j> :wincmd j<CR>
+nnoremap <A-h> :wincmd h<CR>
+
+
+" " telescope
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep for > ')})<CR>
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -129,8 +137,10 @@ nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <C-g> :lua require("harpoon.mark").rm_file()<CR>
+nnoremap <leader>rr :lua require("harpoon.mark").rm_file()<CR>
 nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
+nnoremap <leader>tu :lua require("harpoon.term").gotoTerminal(1)<CR>
+
 
 nnoremap <leader>dd :lua vim.lsp.buf.definition()<CR>
 
@@ -165,12 +175,15 @@ fun! TrimWhiteSpace()
 endfun
 
 " erases all trailing white spaces from all file types
-augroup bruno
+augroup WhiteSpace
   autocmd!
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
 
-nnoremap <CR> :lua print("let's go pens")<CR>
+augroup WrapInMarkdown
+  autocmd!
+  autocmd FileType markdown setlocal wrap
+augroup END
 
-lua require('bruno')
+nnoremap <CR> :echo "let's go pens"<CR>
 
