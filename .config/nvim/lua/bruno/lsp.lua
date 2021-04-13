@@ -27,6 +27,7 @@ require'lspconfig'.sumneko_lua.setup {
 -- local on_attach = require'completion'.on_attach
 require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
 require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
 -- lua require'lspconfig'.tsserver.setup{ on_attach=on_attach }
 -- lua require'lspconfig'.solargraph.setup{ on_attach=on_attach }
 -- lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
