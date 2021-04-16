@@ -43,7 +43,7 @@ set nowrap
 set ignorecase
 set smartcase
 set scrolloff=8
-"set guicursor=
+set guicursor=
 set noerrorbells
 
 " tabs
@@ -90,10 +90,7 @@ lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 " LSP
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 set completeopt=menuone,noinsert,noselect
-
-
 
 let mapleader = " "
 
@@ -102,6 +99,8 @@ nnoremap <A-l> :wincmd l<CR>
 nnoremap <A-k> :wincmd k<CR>
 nnoremap <A-j> :wincmd j<CR>
 nnoremap <A-h> :wincmd h<CR>
+nnoremap <leader>vs :vsplit<CR>
+nnoremap <leader>ss :split<CR>
 " telescope
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep for > ')})<CR>
 nnoremap <C-p> <cmd>Telescope git_files<cr>
@@ -110,7 +109,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " harpoon
-nnoremap <C-i> :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>m :lua require("harpoon.mark").add_file()<CR>
 nnoremap <C-x> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<CR>
