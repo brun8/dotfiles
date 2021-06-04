@@ -1,4 +1,4 @@
-#Gladys If you come from bash you might have to change your $PATH.
+# Gladys If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -102,24 +102,29 @@ alias zshconfig="vim ~/.zshrc"
 
 # ALIASES
 
+alias rm=trash
 alias vi=nvim
+alias nvi=nvim
 alias python=python3
 alias pytohn=python
+alias brave=brave-browser
+
 alias vimconfig="vim ~/.vimrc"
-alias chrome="open -a \"Google Chrome\""
 alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
-alias rm=trash
+alias nvimdir="cd ~/.config/nvim"
 alias grandef="cd ~/cc/cjr/grandef"
 alias sourcez="source ~/.zshrc"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
