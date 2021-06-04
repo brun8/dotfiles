@@ -111,7 +111,7 @@ alias brave=brave-browser
 
 alias vimconfig="vim ~/.vimrc"
 alias hyperconfig="vim ~/.hyper.js"
-alias nvimconfig="nvim ~/.config/nvim/init.vim"
+alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias nvimdir="cd ~/.config/nvim"
 alias grandef="cd ~/cc/cjr/grandef"
 alias sourcez="source ~/.zshrc"

@@ -124,7 +124,7 @@ nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
 nnoremap <leader>tu :lua require("harpoon.term").gotoTerminal(1)<CR>
 
 " lsp
-nnoremap <leader>dd :lua vim.lsp.buf.definition()<CR>
+"nnoremap <leader>dd :lua vim.lsp.buf.definition()<CR>
 
 " goyo
 nnoremap <leader>go :Goyo<CR>
