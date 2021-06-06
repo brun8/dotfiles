@@ -106,7 +106,10 @@ local function packer_start()
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {'ThePrimeagen/git-worktree.nvim'}
+  }
   -- harpoon
   use 'ThePrimeagen/harpoon'
   -- terminal
@@ -116,6 +119,7 @@ local function packer_start()
   use 'nvim-treesitter/playground'
   -- others
   -- use 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'tpope/vim-fugitive'
   use 'mbbill/undotree'
   use 'preservim/nerdtree'
@@ -128,7 +132,6 @@ local function packer_start()
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  --use 'itchyny/lightline.vim'
   -- colorschemes
   use 'gruvbox-community/gruvbox'
   use 'sainnhe/gruvbox-material'
@@ -178,6 +181,11 @@ local function set_keymaps()
   map('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opt)
   map('n', '<C-p>', '<CMD>Telescope git_files<CR>', opt)
 
+  -- worktree
+  map('n', '<leader>wc', '<CMD>lua require("git-worktree").create_worktree(vim.fn.input("Worktree name > "), vim.fn.input("Worktree upstream > "))<CR>', opt)
+  map('n', '<leader>ws', '<CMD>lua require("git-worktree").switch_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
+  map('n', '<leader>wd', '<CMD>lua require("git-worktree").delete_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
+
   -- harpoon
   map('n', '<leader>m', ":lua require'harpoon.mark'.add_file()<CR>", opt)
   map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
@@ -193,6 +201,9 @@ local function set_keymaps()
 
   -- goyo
   map('n', '<leader>go', "<CMD>:Goyo<CR>", opt)
+
+  -- markdown-previwer
+  map('n', '<leader>md', "<CMD>:MarkdownPreviewToggle<CR>", opt)
 
   -- NERDTree
   map('n', '<C-n>', "<CMD>:NERDTreeToggle<CR>", opt)
