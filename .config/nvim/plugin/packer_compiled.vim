@@ -47,8 +47,8 @@ local function save_profiles(threshold)
 end
 
 time("Luarocks path setup", true)
-local package_path_str = "/home/bruno/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/bruno/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/bruno/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/bruno/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/bruno/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/brun/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/brun/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/brun/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/brun/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/brun/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -73,83 +73,83 @@ time("Defining packer_plugins", true)
 _G.packer_plugins = {
   ["auto-pairs"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/auto-pairs"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
   ["ayu-vim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/ayu-vim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/ayu-vim"
   },
   ["coc.nvim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/coc.nvim"
   },
   ["emmet-vim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/emmet-vim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
   ["goyo.vim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/goyo.vim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/goyo.vim"
   },
   gruvbox = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/gruvbox"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   ["gruvbox-material"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/gruvbox-material"
   },
   harpoon = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/harpoon"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/harpoon"
   },
   ["lightline.vim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/lightline.vim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/lightline.vim"
   },
   nerdcommenter = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nerdcommenter"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/nerdcommenter"
   },
   nerdtree = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nerdtree"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/nerdtree"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   playground = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/playground"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["tokyonight-vim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/tokyonight-vim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/tokyonight-vim"
   },
   undotree = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/undotree"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/undotree"
   },
   ["vim-sandwich"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim-sandwich"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/vim-sandwich"
   }
 }
 

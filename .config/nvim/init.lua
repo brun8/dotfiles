@@ -33,6 +33,7 @@ local function set_vim_o()
     errorbells = false,
     expandtab = true,
     hidden = true,
+    signcolumn = 'yes',
     hlsearch = false,
     incsearch = true,
     hidden = true,
@@ -63,7 +64,6 @@ local function set_vim_o()
   vim.cmd('set updatetime=300')
   vim.cmd "syntax enable"
   vim.cmd "syntax on"
-  vim.cmd "colo ayu"
 end
 
 local function set_vim_wo()
@@ -98,6 +98,8 @@ local function packer_start()
   local use = packer.use
   packer.reset()
 
+  -- plugins
+
   use 'wbthomason/packer.nvim'
 
   use {'neoclide/coc.nvim', branch = 'release'}
@@ -107,12 +109,14 @@ local function packer_start()
   use 'nvim-telescope/telescope.nvim'
   -- harpoon
   use 'ThePrimeagen/harpoon'
+  -- terminal
+  use 'voldikss/vim-floaterm'
   -- treesitter
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
-  require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
   -- others
   -- use 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  use 'tpope/vim-fugitive'
   use 'mbbill/undotree'
   use 'preservim/nerdtree'
   use 'preservim/nerdcommenter'
@@ -120,12 +124,36 @@ local function packer_start()
   use 'mattn/emmet-vim'
   use 'machakann/vim-sandwich'
   use 'junegunn/goyo.vim'
-  use 'itchyny/lightline.vim'
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  --use 'itchyny/lightline.vim'
   -- colorschemes
   use 'gruvbox-community/gruvbox'
   use 'sainnhe/gruvbox-material'
   use 'ayu-theme/ayu-vim'
   use 'ghifarit53/tokyonight-vim'
+
+  require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+
+  local lualine_opts = {
+    options = {
+      theme = 'ayu_mirage'
+    },
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'branch'},
+      lualine_c = {'filename'},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {'location'},
+    }
+  }
+
+  require'lualine'.setup(lualine_opts)
+
 end
 
 local function set_packer_config()
@@ -137,6 +165,8 @@ local function set_keymaps()
   local map = vim.api.nvim_set_keymap
 
   local opt = { noremap = true, silent = true }
+
+  map('n', '<C-c>', '<esc>', opt)
 
   -- netrw
   map('n', '<leader>nn', '<CMD>Explore<CR>', opt)
@@ -157,6 +187,9 @@ local function set_keymaps()
   map('n', '<C-l>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
   map('n', '<leader>rr', ":lua require'harpoon.mark'.rm_file()<CR>", opt)
   map('n', '<leader><C-r>', ":lua require'harpoon.mark'.clear_all()<CR>", opt)
+
+  --floaterm
+  map('n', '<leader>tt', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', opt)
 
   -- goyo
   map('n', '<leader>go', "<CMD>:Goyo<CR>", opt)
@@ -180,7 +213,12 @@ local function set_keymaps()
 
 end
 
+local function set_colorscheme()
+  vim.cmd "colo ayu"
+end
+
 set_vim_config()
 set_packer_config()
 set_keymaps()
+set_colorscheme()
 
