@@ -187,6 +187,7 @@ local function set_keymaps()
   map('n', '<leader>wc', '<CMD>lua require("git-worktree").create_worktree(vim.fn.input("Worktree name > "), vim.fn.input("Worktree upstream > "))<CR>', opt)
   map('n', '<leader>ws', '<CMD>lua require("git-worktree").switch_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
   map('n', '<leader>wd', '<CMD>lua require("git-worktree").delete_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
+  map('n', '<leader>gw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opt)
 
   -- harpoon
   map('n', '<leader>m', ":lua require'harpoon.mark'.add_file()<CR>", opt)
