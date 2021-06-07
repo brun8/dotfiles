@@ -38,6 +38,7 @@ local function set_vim_o()
     incsearch = true,
     hidden = true,
     scrolloff = 5,
+    sidescrolloff = 5,
     softtabstop = 2,
     showmode = false,
     smartcase = true,
