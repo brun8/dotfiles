@@ -126,6 +126,8 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+export PATH=$PATH:$HOME/nvim/bin
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"

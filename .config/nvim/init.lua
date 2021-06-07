@@ -9,19 +9,6 @@ local function set_augroup()
   vim.api.nvim_command("augroup END")
 end
 
--- gambiarra rsrs
-local function clear_white_space()
-  vim.cmd([[
-    fun! TrimWhiteSpace()
-      let l:save = winsaveview()
-      keeppatterns %s/\s\+$//e
-    endfun
-    augroup WhiteSpace
-      autocmd!
-      autocmd BufWritePre * :call TrimWhiteSpace()
-    augroup END
-  ]])
-end
 
 local function set_vim_g()
   vim.g.mapleader = " "
@@ -77,7 +64,6 @@ local function set_vim_config()
   set_vim_g()
   set_vim_o()
   set_vim_wo()
-  clear_white_space()
 end
 
 local function packer_verify()
@@ -225,7 +211,7 @@ local function set_keymaps()
 end
 
 local function set_colorscheme()
-  vim.cmd "colo ayu"
+  vim.cmd "colo gruvbox-material"
 end
 
 set_vim_config()
