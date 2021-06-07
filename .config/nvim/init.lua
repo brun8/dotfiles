@@ -45,6 +45,7 @@ local function set_vim_o()
     ignorecase = true,
     termguicolors = true,
     guicursor = "",
+    completeopt = "menuone,noinsert,noselect"
   }
 
   -- Generic vim.o
@@ -103,7 +104,8 @@ local function packer_start()
 
   use 'wbthomason/packer.nvim'
 
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use 'neovim/nvim-lspconfig'
+  use 'nvim-lua/completion-nvim'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -191,7 +193,7 @@ local function set_keymaps()
   map('n', '<leader>gw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opt)
 
   -- harpoon
-  map('n', '<leader>m', ":lua require'harpoon.mark'.add_file()<CR>", opt)
+  map('n', '<leader>mm', ":lua require'harpoon.mark'.add_file()<CR>", opt)
   map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
   map('n', '<C-h>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
   map('n', '<C-j>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
@@ -216,16 +218,11 @@ local function set_keymaps()
   map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
   map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
-  -- coc
-  local coc_opts = { silent=true, noremap=false }
-
-  map('n', '<leader>gd', '<Plug>(coc-definition)', coc_opts)
-  map('n', '<leader>dd', '<Plug>(coc-definition)', coc_opts)
-  map('n', '<leader>gi', '<Plug>(coc-implementation)', coc_opts)
-  map('n', '<leader>gr', '<Plug>(coc-references)', coc_opts)
-  map('n', '<leader>rn', '<Plug>(coc-rename)', coc_opts)
-  map('n', '<leader>fm', '<Plug>(coc-format-selected)', coc_opts)
-  map('v', '<leader>fm', '<Plug>(coc-format-selected)', coc_opts)
+  -- lsp
+  map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+  map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+  map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+  map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
 
   -- vim-go
   map('n', '<leader>gfmt', '<CMD>:GoFmt<CR>', opt)
@@ -237,8 +234,18 @@ local function set_colorscheme()
   vim.cmd "colo ayu"
 end
 
+local function setup_lsp()
+  local on_attach = require'completion'.on_attach
+
+  require'lspconfig'.tsserver.setup{ on_attach=on_attach }
+  require'lspconfig'.pyright.setup{ on_attach=on_attach }
+  require'lspconfig'.solargraph.setup{ on_attach=on_attach }
+  require'lspconfig'.gopls.setup{ on_attach=on_attach }
+end
+
 set_vim_config()
 set_packer_config()
 set_keymaps()
 set_colorscheme()
+setup_lsp()
 
