@@ -118,6 +118,7 @@ local function packer_start()
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+  use {'fatih/vim-go', run = 'GoUpdateBinaries'}
   -- colorschemes
   use 'gruvbox-community/gruvbox'
   use 'sainnhe/gruvbox-material'
@@ -125,7 +126,6 @@ local function packer_start()
   use 'ghifarit53/tokyonight-vim'
 
   require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-
 
   local lualine_opts = {
     options = {
@@ -140,8 +140,10 @@ local function packer_start()
       lualine_z = {'location'},
     }
   }
-
   require'lualine'.setup(lualine_opts)
+
+  vim.g.go_fmt_autosave = 0
+  vim.g.go_imports_autosave = 0
 
 end
 
@@ -202,11 +204,16 @@ local function set_keymaps()
   local coc_opts = { silent=true, noremap=false }
 
   map('n', '<leader>gd', '<Plug>(coc-definition)', coc_opts)
+  map('n', '<leader>dd', '<Plug>(coc-definition)', coc_opts)
   map('n', '<leader>gi', '<Plug>(coc-implementation)', coc_opts)
   map('n', '<leader>gr', '<Plug>(coc-references)', coc_opts)
   map('n', '<leader>rn', '<Plug>(coc-rename)', coc_opts)
   map('n', '<leader>fm', '<Plug>(coc-format-selected)', coc_opts)
-  map('n', '<leader>fm', '<Plug>(coc-format-selected)', coc_opts)
+  map('v', '<leader>fm', '<Plug>(coc-format-selected)', coc_opts)
+
+  -- vim-go
+  map('n', '<leader>gfmt', '<CMD>:GoFmt<CR>', opt)
+
 
 end
 
