@@ -1,6 +1,7 @@
 local cmd = vim.api.nvim_command
-local fn = vim.fn
-local packer = nil
+local fn = vim.fn local packer = nil
+local o = vim.o
+local map = vim.api.nvim_set_keymap
 
 local function set_augroup()
   vim.api.nvim_command("augroup WrapInMarkdown")
@@ -29,28 +30,40 @@ end
 
 local function set_vim_o()
   local settings = {
+    completeopt = "menuone,noselect,noinsert",
     backup = false,
     errorbells = false,
-    expandtab = true,
     hidden = true,
-    signcolumn = 'yes',
+
     hlsearch = false,
     incsearch = true,
     hidden = true,
+
     scrolloff = 5,
     sidescrolloff = 5,
-    softtabstop = 2,
+
     showmode = false,
     smartcase = true,
     ignorecase = true,
     termguicolors = true,
     guicursor = "",
-    completeopt = "menuone,noinsert,noselect"
+    cursorline = true,
+    signcolumn = 'yes',
+    showmatch = true,
+
+    splitright = true,
+    splitbelow = true,
+
+    joinspaces = false,
+    tabstop = 2,
+    shiftwidth = 2,
+    softtabstop = 2,
+    expandtab = true,
   }
 
   -- Generic vim.o
   for k, v in pairs(settings) do
-    vim.o[k] = v
+    vim.opt[k] = v
   end
 
   -- Custom vim.o
@@ -59,13 +72,14 @@ local function set_vim_o()
   -- Not yet in vim.o
   vim.cmd('set encoding=utf8')
   vim.cmd('set nowritebackup')
-  vim.cmd('set shiftwidth=2')
   vim.cmd('set secure')
   vim.cmd('set splitright')
-  vim.cmd('set tabstop=2')
   vim.cmd('set updatetime=300')
   vim.cmd "syntax enable"
   vim.cmd "syntax on"
+
+  local opt = vim.opt
+
 end
 
 local function set_vim_wo()
@@ -105,7 +119,7 @@ local function packer_start()
   use 'wbthomason/packer.nvim'
 
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/nvim-compe'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -170,7 +184,6 @@ local function set_packer_config()
 end
 
 local function set_keymaps()
-  local map = vim.api.nvim_set_keymap
 
   local opt = { noremap = true, silent = true }
 
@@ -185,6 +198,7 @@ local function set_keymaps()
   map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', opt)
   map('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opt)
   map('n', '<C-p>', '<CMD>Telescope git_files<CR>', opt)
+  map('n', '<leader>pp', '<CMD>Telescope git_files<CR>', opt)
 
   -- worktree
   map('n', '<leader>wc', '<CMD>lua require("git-worktree").create_worktree(vim.fn.input("Worktree name > "), vim.fn.input("Worktree upstream > "))<CR>', opt)
@@ -215,37 +229,116 @@ local function set_keymaps()
   map('n', '<C-n>', "<CMD>:NERDTreeToggle<CR>", opt)
 
   -- navigate completion menu
-  map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-  map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+  --map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+  --map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
   -- lsp
   map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+  map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
   map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
   map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
   map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
-
-  -- vim-go
-  map('n', '<leader>gfmt', '<CMD>:GoFmt<CR>', opt)
-
-
 end
 
 local function set_colorscheme()
   vim.cmd "colo ayu"
 end
 
-local function setup_lsp()
-  local on_attach = require'completion'.on_attach
+local function setup_compe()
+  local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+  end
 
-  require'lspconfig'.tsserver.setup{ on_attach=on_attach }
-  require'lspconfig'.pyright.setup{ on_attach=on_attach }
-  require'lspconfig'.solargraph.setup{ on_attach=on_attach }
-  require'lspconfig'.gopls.setup{ on_attach=on_attach }
+  local function check_back_space()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+      return true
+    else
+      return false
+    end
+  end
+
+  -- Use (s-)tab to:
+  --- move to prev/next item in completion menuone
+  --- jump to prev/next snippet's placeholder
+  _G.tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+      return t "<C-n>"
+    -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    --   return t "<Plug>(vsnip-expand-or-jump)"
+    elseif check_back_space() then
+      return t "<Tab>"
+    else
+      return vim.fn['compe#complete']()
+    end
+  end
+
+  _G.s_tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+      return t "<C-p>"
+    -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    --   return t "<Plug>(vsnip-jump-prev)"
+    else
+      return t "<S-Tab>"
+    end
+  end
+
+  require 'compe'.setup {
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    min_length = 1,
+    preselect = 'enable',
+    throttle_time = 80,
+    source_timeout = 200,
+    incomplete_delay = 400,
+    max_abbr_width = 100,
+    max_kind_width = 100,
+    max_menu_width = 100,
+    documentation = true,
+
+    source = {
+      path = true,
+      buffer = true,
+      -- calc = true,
+      --vsnip = true,
+      nvim_lsp = true,
+      nvim_lua = true,
+      spell = true,
+      -- tags = true,
+      -- snippets_nvim = true,
+      -- treesitter = true,
+    },
+  }
+
+end
+local function setup_lsp()
+  local nvim_lsp = require'lspconfig'
+
+  local function default_on_attach(client)
+    print('Attaching to ' .. client.name)
+
+    map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+    map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
+    map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+    map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+    map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+  end
+
+  local default_config = {
+    on_attach = default_on_attach
+  }
+
+  local servers = { "gopls", "pyright", "solargraph", "tsserver" }
+  for _, server in ipairs(servers) do
+    nvim_lsp[server].setup {}
+  end
 end
 
-set_vim_config()
 set_packer_config()
-set_keymaps()
 set_colorscheme()
 setup_lsp()
+setup_compe()
+set_vim_config()
+set_keymaps()
 

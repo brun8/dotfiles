@@ -108,6 +108,7 @@ alias nvi=nvim
 alias python=python3
 alias pytohn=python
 alias brave=brave-browser
+alias ts=ts-node
 
 alias vimconfig="vim ~/.vimrc"
 alias hyperconfig="vim ~/.hyper.js"

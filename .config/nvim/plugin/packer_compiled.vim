@@ -62,8 +62,9 @@ time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
@@ -79,13 +80,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brun/.local/share/nvim/site/pack/packer/start/ayu-vim"
   },
-  ["coc.nvim"] = {
+  ["completion-nvim"] = {
     loaded = true,
-    path = "/home/brun/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/completion-nvim"
   },
   ["emmet-vim"] = {
     loaded = true,
     path = "/home/brun/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
+  ["git-worktree.nvim"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
   },
   ["goyo.vim"] = {
     loaded = true,
@@ -103,9 +108,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brun/.local/share/nvim/site/pack/packer/start/harpoon"
   },
-  ["lightline.vim"] = {
+  ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/brun/.local/share/nvim/site/pack/packer/start/lightline.vim"
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim"
   },
   nerdcommenter = {
     loaded = true,
@@ -115,9 +124,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brun/.local/share/nvim/site/pack/packer/start/nerdtree"
   },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/brun/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -146,6 +163,18 @@ _G.packer_plugins = {
   undotree = {
     loaded = true,
     path = "/home/brun/.local/share/nvim/site/pack/packer/start/undotree"
+  },
+  ["vim-floaterm"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/vim-floaterm"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-go"] = {
+    loaded = true,
+    path = "/home/brun/.local/share/nvim/site/pack/packer/start/vim-go"
   },
   ["vim-sandwich"] = {
     loaded = true,
