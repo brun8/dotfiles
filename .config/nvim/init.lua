@@ -142,6 +142,7 @@ local function packer_start()
   use 'preservim/nerdtree'
   use 'preservim/nerdcommenter'
   use 'jiangmiao/auto-pairs'
+  use 'godlygeek/tabular'
   use 'mattn/emmet-vim'
   use 'machakann/vim-sandwich'
   use 'junegunn/goyo.vim'
@@ -149,7 +150,7 @@ local function packer_start()
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  use {'fatih/vim-go', run = 'GoUpdateBinaries'}
+  --use {'fatih/vim-go', run = 'GoUpdateBinaries'}
   -- colorschemes
   use 'gruvbox-community/gruvbox'
   use 'sainnhe/gruvbox-material'
@@ -192,6 +193,10 @@ local function set_keymaps()
   -- netrw
   map('n', '<leader>nn', '<CMD>Explore<CR>', opt)
 
+  -- tabular
+  map('n', '<leader>tab', '<cmd>:Tab/|<cr>', opt)
+  map('v', '<leader>tab', '<cmd>:Tab/|<cr>', opt)
+
   -- telescope
   map('n', '<leader>ff', '<CMD>Telescope find_files<CR>', opt)
   map('n', '<leader>fb', '<CMD>Telescope buffers<CR>', opt)
@@ -207,7 +212,7 @@ local function set_keymaps()
   map('n', '<leader>gw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opt)
 
   -- harpoon
-  map('n', '<leader>mm', ":lua require'harpoon.mark'.add_file()<CR>", opt)
+  map('n', '<leader>mm', "<cmd>lua require'harpoon.mark'.add_file()<cr>", opt)
   map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
   map('n', '<C-h>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
   map('n', '<C-j>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
@@ -232,12 +237,14 @@ local function set_keymaps()
   --map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
   --map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
+
   -- lsp
   map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-  map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
   map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
   map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
   map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+  map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
+  map('n', '<leader>stop', '<cmd>:lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>', opt)
 end
 
 local function set_colorscheme()
@@ -318,11 +325,11 @@ local function setup_lsp()
   local function default_on_attach(client)
     print('Attaching to ' .. client.name)
 
-    map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-    map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
-    map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-    map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-    map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+    --map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+    --map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+    --map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+    --map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+    --map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
   end
 
   local default_config = {
@@ -335,10 +342,10 @@ local function setup_lsp()
   end
 end
 
+set_vim_config()
 set_packer_config()
 set_colorscheme()
 setup_lsp()
 setup_compe()
-set_vim_config()
 set_keymaps()
 
