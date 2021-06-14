@@ -205,6 +205,7 @@ local function set_keymaps()
   local opt = { noremap = true, silent = true }
 
   map('n', '<C-c>', '<esc>', opt)
+  map('t', '<esc>', '<c-\\><c-n>', opt)
 
   -- netrw
   map('n', '<leader>nn', '<CMD>Explore<CR>', opt)
@@ -230,118 +231,123 @@ local function set_keymaps()
     opt
   )
 
--- worktree
-map('n', '<leader>wc', '<CMD>lua require("git-worktree").create_worktree(vim.fn.input("Worktree name > "), vim.fn.input("Worktree upstream > "))<CR>', opt)
-map('n', '<leader>ws', '<CMD>lua require("git-worktree").switch_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
-map('n', '<leader>wd', '<CMD>lua require("git-worktree").delete_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
-map('n', '<leader>gw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opt)
+  -- worktree
+  map('n', '<leader>wc', '<CMD>lua require("git-worktree").create_worktree(vim.fn.input("Worktree name > "), vim.fn.input("Worktree upstream > "))<CR>', opt)
+  map('n', '<leader>ws', '<CMD>lua require("git-worktree").switch_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
+  map('n', '<leader>wd', '<CMD>lua require("git-worktree").delete_worktree(vim.fn.input("Worktree name > "))<CR>', opt)
+  map('n', '<leader>gw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opt)
 
--- harpoon
-map('n', '<leader>mm', "<cmd>lua require'harpoon.mark'.add_file()<cr>", opt)
-map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
-map('n', '<C-h>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
-map('n', '<C-j>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
-map('n', '<C-k>', ":lua require'harpoon.ui'.nav_file(3)<CR>", opt)
-map('n', '<C-l>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
-map('n', '<leader>rr', ":lua require'harpoon.mark'.rm_file()<CR>", opt)
-map('n', '<leader><C-r>', ":lua require'harpoon.mark'.clear_all()<CR>", opt)
+  -- harpoon
+  map('n', '<leader>mm', "<cmd>lua require'harpoon.mark'.add_file()<cr>", opt)
+  map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
+  map('n', '<C-h>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
+  map('n', '<C-j>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
+  map('n', '<C-k>', ":lua require'harpoon.ui'.nav_file(3)<CR>", opt)
+  map('n', '<C-l>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
+  map('n', '<leader>rr', ":lua require'harpoon.mark'.rm_file()<CR>", opt)
+  map('n', '<leader><C-r>', ":lua require'harpoon.mark'.clear_all()<CR>", opt)
 
---floaterm
-map('n', '<leader>tt', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', opt)
+  --floaterm
+  map('n', '<leader>tt', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', opt)
 
--- goyo
-map('n', '<leader>go', "<CMD>:Goyo<CR>", opt)
+  -- goyo
+  map('n', '<leader>go', "<CMD>:Goyo<CR>", opt)
 
--- markdown-previwer
-map('n', '<leader>md', "<CMD>:MarkdownPreviewToggle<CR>", opt)
+  -- markdown-previwer
+  map('n', '<leader>md', "<CMD>:MarkdownPreviewToggle<CR>", opt)
 
--- NERDTree
-map('n', '<C-n>', "<CMD>:NERDTreeToggle<CR>", opt)
+  -- NERDTree
+  map('n', '<C-n>', "<CMD>:NERDTreeToggle<CR>", opt)
 
--- navigate completion menu
---map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
---map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+  -- navigate completion menu
+  --map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+  --map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 
--- lsp
-map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
-map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
-map('n', '<leader>stop', '<cmd>:lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>', opt)
+  -- lsp
+  map('n', '<leader>ee', '<cmd>:edit<cr>', opt)
+  map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+  map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+  map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+  map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+  map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
+  map('n', '<leader>stop', '<cmd>:lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>', opt)
+  map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+  map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+  map("i", "<S-Tab>", "v:lua.tab_complete()", {expr = true})
+  map("s", "<S-Tab>", "v:lua.tab_complete()", {expr = true})
 end
 
 local function set_colorscheme()
-vim.cmd "colo ayu"
+  vim.cmd "colo ayu"
 end
 
 local function setup_compe()
-local function t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local function check_back_space()
-  local col = vim.fn.col('.') - 1
-  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-    return true
-  else
-    return false
+  local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
   end
-end
+
+  local function check_back_space()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+      return true
+    else
+      return false
+    end
+  end
 
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
-  --   return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
+  _G.tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+      return t "<C-n>"
+    elseif vim.fn.call("vsnip#available", {1}) == 1 then
+      return t "<Plug>(vsnip-expand-or-jump)"
+    elseif check_back_space() then
+      return t "<Tab>"
+    else
+      return vim.fn['compe#complete']()
+    end
   end
-end
-
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-  --   return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
+  _G.s_tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+      return t "<C-p>"
+    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+      return t "<Plug>(vsnip-jump-prev)"
+    else
+      -- If <S-Tab> is not working in your terminal, change it to <C-h>
+      return t "<S-Tab>"
+    end
   end
-end
 
-require 'compe'.setup {
-  enabled = true,
-  autocomplete = true,
-  debug = false,
-  min_length = 1,
-  preselect = 'enable',
-  throttle_time = 80,
-  source_timeout = 200,
-  incomplete_delay = 400,
-  max_abbr_width = 100,
-  max_kind_width = 100,
-  max_menu_width = 100,
-  documentation = true,
+  require 'compe'.setup {
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    min_length = 1,
+    preselect = 'enable',
+    throttle_time = 80,
+    source_timeout = 200,
+    incomplete_delay = 400,
+    max_abbr_width = 100,
+    max_kind_width = 100,
+    max_menu_width = 100,
+    documentation = true,
 
-  source = {
-    path = true,
-    buffer = true,
-    -- calc = true,
-    --vsnip = true,
-    nvim_lsp = true,
-    nvim_lua = true,
-    spell = true,
-    -- tags = true,
-    -- snippets_nvim = true,
-    -- treesitter = true,
-  },
-}
+    source = {
+      path = true,
+      buffer = true,
+      -- calc = true,
+      --vsnip = true,
+      nvim_lsp = true,
+      nvim_lua = true,
+      spell = true,
+      -- tags = true,
+      -- snippets_nvim = true,
+      -- treesitter = true,
+    },
+  }
 
 end
 
