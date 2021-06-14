@@ -134,7 +134,6 @@ local function packer_start()
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
   -- others
-  -- use 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'tpope/vim-fugitive'
   use 'mbbill/undotree'
@@ -260,8 +259,6 @@ local function set_keymaps()
   map('n', '<C-n>', "<CMD>:NERDTreeToggle<CR>", opt)
 
   -- navigate completion menu
-  --map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-  --map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 
   -- lsp
@@ -272,10 +269,8 @@ local function set_keymaps()
   map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
   map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
   map('n', '<leader>stop', '<cmd>:lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>', opt)
-  map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-  map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-  map("i", "<S-Tab>", "v:lua.tab_complete()", {expr = true})
-  map("s", "<S-Tab>", "v:lua.tab_complete()", {expr = true})
+  map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+  map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 end
 
 local function set_colorscheme()
