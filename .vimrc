@@ -15,13 +15,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'pangloss/vim-javascript'
-
-
-
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
+colorscheme gruvbox-material
 
 " lightline
 set laststatus=2
