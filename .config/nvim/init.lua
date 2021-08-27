@@ -4,13 +4,14 @@ local o = vim.o
 local map = vim.api.nvim_set_keymap
 
 local function set_augroup()
-  vim.api.nvim_command("augroup WrapInMarkdown")
-  vim.api.nvim_command("autocmd!")
-  vim.api.nvim_command("autocmd FileType markdown setlocal wrap")
-  vim.api.nvim_command("augroup END")
+  vim.cmd([[
+    augroup WrapInMarkdown
+    autocmd!
+    autocmd FileType markdown setlocal wrap
+    augroup END
+  ]])
 end
 
--- gambiarra rsrs
 -- gambiarra rsrs
 local function clear_white_space()
   vim.cmd([[
@@ -61,8 +62,6 @@ local function set_vim_o()
     shiftwidth = 2,
     softtabstop = 2,
     expandtab = true,
-
-
   }
 
   -- Generic vim.o
@@ -120,7 +119,6 @@ local function packer_start()
 
   -- plugins
   use 'wbthomason/packer.nvim'
-
   --lsp
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
@@ -133,6 +131,14 @@ local function packer_start()
   use "folke/todo-comments.nvim"
   -- harpoon
   use 'ThePrimeagen/harpoon'
+  -- refactoring
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
   -- terminal
   use 'voldikss/vim-floaterm'
   -- treesitter
@@ -151,7 +157,6 @@ local function packer_start()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   -- colorschemes
-  use 'sainnhe/gruvbox-material'
   use 'ayu-theme/ayu-vim'
   use 'navarasu/onedark.nvim'
 
@@ -175,7 +180,18 @@ local function packer_start()
 
   require("todo-comments").setup {}
 
-  require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+  require'nvim-treesitter.configs'.setup {
+    highlight = { enable = true },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = ".",
+        scope_incremental = "<leader>s",
+        node_decremental = ",",
+      },
+    },
+  }
 
   local lualine_opts = {
     options = {
@@ -192,7 +208,6 @@ local function packer_start()
   }
 
   require'lualine'.setup(lualine_opts)
-
   vim.g.go_fmt_autosave = 0
   vim.g.go_imports_autosave = 0
 
@@ -210,10 +225,16 @@ local function set_keymaps()
   map('n', '<C-c>', '<esc>', opt)
   map('t', '<esc>', '<c-\\><c-n>', opt)
 
+  -- copy paste
   map('x', '<leader>p', '"_dP', opt)
 
   -- netrw
   map('n', '<leader>nn', '<CMD>Explore<CR>', opt)
+
+  -- refactoring
+  map("v", "<Leader>re", [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+  map("v", "<Leader>rf", [[ <Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+  map("v", "<Leader>rt", [[ <Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
 
 
   -- tabular
@@ -281,7 +302,7 @@ end
 
 local function set_colorscheme()
   vim.g.onedark_style = 'darker'
-  vim.cmd "colo onedark"
+  vim.cmd "colo ayu"
 end
 
 local function setup_compe()
