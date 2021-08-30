@@ -1,5 +1,5 @@
 # Gladys If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$(echo $HOME)/.oh-my-zsh"
@@ -103,7 +103,7 @@ alias zshconfig="vim ~/.zshrc"
 # ALIASES
 
 alias rm=trash
-alias vi=nvim
+alias vi='/usr/local/bin/nvim'
 alias nvi=nvim
 alias python=python3
 alias pytohn=python
@@ -113,7 +113,7 @@ alias sourcez="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.lua"
-alias nvimdir="cd ~/.config/nvim"
+alias nvimdir="cd ~/.config/nvim/"
 alias unb="cd ~/cc/unb/"
 alias mandoubem="cd ~/cc/cjr/App-Mandou-Bem/next"
 
@@ -134,5 +134,4 @@ alias android="emulator -avd Pixel_3a_API_30_x86 -dns-server 8.8.8.8 -no-audio"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
-
 
