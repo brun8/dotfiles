@@ -1,16 +1,6 @@
--- commands 
--- teste colorscheme
-vim.cmd([[
-  augroup colorscheme_opts
-  au!
-  au ColorScheme * hi! Normal guibg=None
-  au ColorScheme * hi! SignColumn guibg=None
-  au ColorScheme * hi! CursorColumn guibg=#404040
-  au ColorScheme * hi! CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=White
-  augroup end
-  colo onedark
-]])
+vim.cmd 'colo onedark'
 
+-- commands 
 vim.cmd([[
   augroup WrapInMarkdown
   autocmd!
@@ -47,6 +37,7 @@ local options = {
   cursorline = true,
   --cursorcolumn = true,
   cc = '80',
+  signcolumn = 'yes',
 
   autoindent = true,
   smartindent = true,
@@ -57,7 +48,6 @@ local options = {
   shiftwidth = 2,
   expandtab = true,
 
-
   splitright = true,
   splitbelow = true,
 }
@@ -65,5 +55,7 @@ local options = {
 for k, v in pairs(options) do
   o[k] = v
 end
+
+vim.o.shortmess = vim.o.shortmess .. 'c'
 
 require'bruno'

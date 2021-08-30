@@ -103,7 +103,7 @@ alias zshconfig="vim ~/.zshrc"
 # ALIASES
 
 alias rm=trash
-alias vi='/usr/local/bin/nvim'
+alias vi=nvim
 alias nvi=nvim
 alias python=python3
 alias pytohn=python
