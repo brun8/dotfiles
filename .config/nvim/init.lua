@@ -1,10 +1,22 @@
-vim.cmd 'colo onedark'
+vim.cmd 'colo nord'
 
--- commands 
+-- commands
 vim.cmd([[
   augroup WrapInMarkdown
   autocmd!
   autocmd FileType markdown setlocal wrap
+  augroup END
+]])
+
+-- gambiarra rsrs
+vim.cmd([[
+  fun! TrimWhiteSpace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+  endfun
+  augroup WhiteSpace
+    autocmd!
+    autocmd BufWritePre * :call TrimWhiteSpace()
   augroup END
 ]])
 
@@ -35,9 +47,10 @@ local options = {
   relativenumber = true,
   termguicolors = true,
   cursorline = true,
-  --cursorcolumn = true,
+  cursorcolumn = true,
   cc = '80',
   signcolumn = 'yes',
+  wrap = false,
 
   autoindent = true,
   smartindent = true,
