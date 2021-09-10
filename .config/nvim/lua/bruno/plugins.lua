@@ -50,7 +50,7 @@ local function packer_start()
   use 'preservim/nerdcommenter'
   use 'godlygeek/tabular'
   use 'mattn/emmet-vim'
-  use 'LunarWatcher/auto-pairs'
+  use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   -- colorschemes
   use 'ayu-theme/ayu-vim'
@@ -75,6 +75,8 @@ local function plugin_configs()
   require'telescope'.load_extension('fzf')
 
   require("todo-comments").setup {}
+
+  require("nvim-autopairs").setup {}
 
   require'nvim-treesitter.configs'.setup {
     highlight = { enable = true },
