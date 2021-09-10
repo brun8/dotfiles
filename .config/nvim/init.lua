@@ -20,6 +20,8 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.cmd [[autocmd filetype cpp nnoremap <leader>cpp :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR>]]
+
 local g = vim.g
 local o = vim.o
 

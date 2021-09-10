@@ -48,10 +48,10 @@ local function packer_start()
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'mbbill/undotree'
   use 'preservim/nerdcommenter'
-  use 'jiangmiao/auto-pairs'
   use 'godlygeek/tabular'
   use 'mattn/emmet-vim'
-  use 'machakann/vim-sandwich'
+  use 'LunarWatcher/auto-pairs'
+  use 'tpope/vim-surround'
   -- colorschemes
   use 'ayu-theme/ayu-vim'
   use 'navarasu/onedark.nvim'

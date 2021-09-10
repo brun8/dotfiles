@@ -7,7 +7,8 @@ require 'nvim-treesitter.configs'.setup {
   'lua',
   'python',
   'go',
-  'ruby'
+  'ruby',
+  'cpp'
 },
   highlight = { enable = true }
 }

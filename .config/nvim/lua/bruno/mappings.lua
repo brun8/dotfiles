@@ -1,4 +1,5 @@
 map = vim.api.nvim_set_keymap
+
 local function set_keymaps()
 
   local opt = { noremap = true, silent = true }
@@ -13,10 +14,14 @@ local function set_keymaps()
   -- netrw
   map('n', '<leader>nn', '<CMD>Explore<CR>', opt)
 
+  -- vim surround
+  -- muda ' para "
+  map("n", "<leader>\"\"", "f'cs'\"", {noremap = false, silent = true, expr = false})
+
   -- refactoring
-  map("v", "<Leader>re", [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
-  map("v", "<Leader>rf", [[ <Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
-  map("v", "<Leader>rt", [[ <Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
+  map("v", "<leader>re", [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+  map("v", "<leader>rf", [[ <Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+  map("v", "<leader>rt", [[ <Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
 
 
   -- tabular
