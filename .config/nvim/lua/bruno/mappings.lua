@@ -17,6 +17,8 @@ local function set_keymaps()
   -- vim surround
   -- muda ' para "
   map("n", "<leader>\"\"", "f'cs'\"", {noremap = false, silent = true, expr = false})
+  -- muda " para '
+  map("n", "<leader>\''", "f\"cs\"'", {noremap = false, silent = true, expr = false})
 
   -- refactoring
   map("v", "<leader>re", [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})

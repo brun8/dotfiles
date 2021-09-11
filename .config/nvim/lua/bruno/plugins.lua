@@ -52,6 +52,8 @@ local function packer_start()
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
   -- colorschemes
   use 'ayu-theme/ayu-vim'
   use 'navarasu/onedark.nvim'
