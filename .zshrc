@@ -128,6 +128,9 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+# marp
+export CHROME_PATH="/usr/bin/brave-browser"
+
 # android
 export PATH=$HOME/Android/Sdk/emulator:$PATH
 alias android="emulator -avd Pixel_3a_API_30_x86 -dns-server 8.8.8.8 -no-audio"
