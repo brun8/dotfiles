@@ -19,7 +19,7 @@ local function setup_lsp()
     on_attach = default_on_attach
   }
 
-  local servers = { "gopls", "solargraph", "tsserver", "pyright", "ccls" }
+  local servers = require'bruno.servers'
   for _, server in ipairs(servers) do
     nvim_lsp[server].setup {}
   end

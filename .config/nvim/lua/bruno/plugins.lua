@@ -21,7 +21,10 @@ local function packer_start()
   use 'wbthomason/packer.nvim'
   --lsp
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
+  --use 'hrsh7th/nvim-compe'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/nvim-cmp'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -92,7 +95,6 @@ local function plugin_configs()
       },
     },
   }
-
 
 end
 
