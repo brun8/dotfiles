@@ -50,7 +50,6 @@ local function packer_start()
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
   -- others
-  use 'code-biscuits/nvim-biscuits'
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'mbbill/undotree'
   use 'preservim/nerdcommenter'
@@ -69,8 +68,12 @@ end
 local function plugin_configs()
   require'telescope'.setup{
     defaults = {
-      prompt_prefix = '≈ '
+      prompt_prefix = '🍛 '
     },
+
+
+
+
     extensions = {
       fzf = {
         fuzzy = true,                    -- false will only do exact matching
@@ -98,14 +101,6 @@ local function plugin_configs()
       },
     },
   }
-
-  require('nvim-biscuits').setup({
-  default_config = {
-    max_length = 20,
-    min_distance = 5,
-    prefix_string = " 🦙 "
-  },
-})
 
 end
 
