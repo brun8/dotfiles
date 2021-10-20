@@ -28,14 +28,11 @@ cmp.setup({
 
     -- For vsnip user.
     --{ name = 'vsnip' },
-
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-
+  },
+  experimental = {
+    ghost_text = true,
   }
+
 })
 
 
