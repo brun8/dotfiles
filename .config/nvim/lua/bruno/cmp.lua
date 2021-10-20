@@ -4,7 +4,7 @@ cmp.setup({
   snippet = {
     expand = function(args)
       -- For `vsnip` user.
-      vim.fn["vsnip#anonymous"](args.body)
+      -- vim.fn["vsnip#anonymous"](args.body)
 
       -- For `luasnip` user.
       -- require('luasnip').lsp_expand(args.body)
@@ -21,7 +21,10 @@ cmp.setup({
     --['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = {
+    { name = 'buffer' },
     { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'emoji', opts = {insert = true} },
 
     -- For vsnip user.
     --{ name = 'vsnip' },
@@ -32,9 +35,9 @@ cmp.setup({
     -- For ultisnips user.
     -- { name = 'ultisnips' },
 
-    { name = 'buffer' },
   }
 })
+
 
 -- Setup lspconfig.
 local servers = require'bruno.servers'

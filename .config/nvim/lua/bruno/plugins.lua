@@ -19,12 +19,14 @@ local function packer_start()
 
   -- plugins
   use 'wbthomason/packer.nvim'
-  --lsp
+  -- lsp
   use 'neovim/nvim-lspconfig'
-  --use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
+  -- cmp
   use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-emoji'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -48,6 +50,7 @@ local function packer_start()
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
   -- others
+  use 'code-biscuits/nvim-biscuits'
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'mbbill/undotree'
   use 'preservim/nerdcommenter'
@@ -95,6 +98,14 @@ local function plugin_configs()
       },
     },
   }
+
+  require('nvim-biscuits').setup({
+  default_config = {
+    max_length = 20,
+    min_distance = 5,
+    prefix_string = " 🦙 "
+  },
+})
 
 end
 
