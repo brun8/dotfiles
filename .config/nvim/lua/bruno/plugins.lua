@@ -19,6 +19,7 @@ local function packer_start()
 
   -- plugins
   use 'wbthomason/packer.nvim'
+  use 'fatih/vim-go'
   -- lsp
   use 'neovim/nvim-lspconfig'
   -- cmp
@@ -70,10 +71,6 @@ local function plugin_configs()
     defaults = {
       prompt_prefix = '🍛 '
     },
-
-
-
-
     extensions = {
       fzf = {
         fuzzy = true,                    -- false will only do exact matching

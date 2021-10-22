@@ -139,3 +139,6 @@ alias android="emulator -avd Pixel_3a_API_30_x86 -dns-server 8.8.8.8 -no-audio"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
 
+# lua language server
+export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
+alias luamake=/home/bruno/tools/lua-language-server/3rd/luamake/luamake

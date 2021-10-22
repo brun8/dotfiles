@@ -36,7 +36,6 @@ local options = {
   -- search
   hlsearch = false,
   incsearch = true,
-  hidden = true,
   smartcase = true,
   ignorecase = true,
 
@@ -48,7 +47,6 @@ local options = {
   nu = true,
   relativenumber = true,
   termguicolors = true,
-  cursorline = true,
   cursorcolumn = true,
   cc = '80',
   signcolumn = 'yes',
