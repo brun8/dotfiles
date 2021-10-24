@@ -89,10 +89,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua"
   },
-  ["emmet-vim"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/emmet-vim"
-  },
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"

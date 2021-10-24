@@ -9,6 +9,8 @@ local function packer_verify()
 end
 
 local function packer_start()
+  local packer = nil
+
   if packer == nil then
     packer = require'packer'
     packer.init()
@@ -100,6 +102,8 @@ local function plugin_configs()
       },
     },
   }
+
+  vim.g.user_emmet_leader_key = '<C-v>'
 
 end
 

@@ -1,4 +1,4 @@
-map = vim.api.nvim_set_keymap
+local map = vim.api.nvim_set_keymap
 
 local function set_keymaps()
 
@@ -25,6 +25,8 @@ local function set_keymaps()
   map("v", "<leader>rf", [[ <Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
   map("v", "<leader>rt", [[ <Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
 
+  -- emmet
+  map("i", "<C-y>,", "<Cmd>:EmmetExpandAbbr<CR>", opt)
 
   -- tabular
   map('n', '<leader>tb', '<cmd>:Tab/=<cr>', opt)
