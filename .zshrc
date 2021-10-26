@@ -108,6 +108,7 @@ alias nvi=nvim
 alias python=python3
 alias pytohn=python
 alias brave=brave-browser
+alias path="echo $PATH | sed 's/:/\n/g'"
 
 alias sourcez="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
