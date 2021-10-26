@@ -29,11 +29,11 @@ local function packer_start()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-emoji'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-symbols.nvim'
   use 'ThePrimeagen/git-worktree.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use "folke/todo-comments.nvim"

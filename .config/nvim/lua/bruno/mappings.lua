@@ -44,6 +44,7 @@ local function set_keymaps()
   map('n', '<leader>com', '<CMD>Telescope commands<CR>', opt)
   map('n', '<leader>fi', '<CMD>Telescope current_buffer_fuzzy_find<CR>', opt)
   map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', opt)
+  map('n', '<leader>em', '<CMD>Telescope symbols<CR>', opt)
   map(
     'n',
     '<leader>gs',

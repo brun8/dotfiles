@@ -21,11 +21,10 @@ cmp.setup({
     ['<C-CR>'] = cmp.mapping.confirm({select = true}),
   },
   sources = {
+    { name = 'nvim_lsp' },
     { name = 'gh_issues' },
     { name = 'buffer'},
-    { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    --{ name = 'emoji', opts = {insert = true} },
 
     -- For vsnip user.
     --{ name = 'vsnip' },
