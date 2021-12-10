@@ -21,7 +21,6 @@ local function packer_start()
 
   -- plugins
   use 'wbthomason/packer.nvim'
-  use 'fatih/vim-go'
   -- lsp
   use 'neovim/nvim-lspconfig'
   -- cmp
@@ -29,6 +28,9 @@ local function packer_start()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -48,7 +50,7 @@ local function packer_start()
     }
   }
   -- terminal
-  use 'voldikss/vim-floaterm'
+  --use 'voldikss/vim-floaterm'
   -- treesitter
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
@@ -56,14 +58,17 @@ local function packer_start()
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'mbbill/undotree'
   use 'preservim/nerdcommenter'
-  use 'godlygeek/tabular'
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   -- colorschemes
+  use 'sainnhe/everforest'
   use 'ayu-theme/ayu-vim'
+  use 'FrenzyExists/aquarium-vim'
+  use 'cocopon/iceberg.vim'
+  use 'rhysd/vim-color-spring-night'
   use 'navarasu/onedark.nvim'
   use 'shaunsingh/nord.nvim'
 end
@@ -85,6 +90,12 @@ local function plugin_configs()
         node_decremental = ",",
       },
     },
+  }
+
+  require'harpoon'.setup {
+    global_settings = {
+      enter_on_sendcmd = true,
+    }
   }
 
   vim.g.user_emmet_leader_key = '<C-v>'

@@ -4,7 +4,7 @@ cmp.setup({
   snippet = {
     expand = function(args)
       -- For `vsnip` user.
-      -- vim.fn["vsnip#anonymous"](args.body)
+       vim.fn["vsnip#anonymous"](args.body)
 
       -- For `luasnip` user.
       -- require('luasnip').lsp_expand(args.body)
@@ -18,12 +18,16 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<C-CR>'] = cmp.mapping.confirm({select = true}),
+    --['<C-CR>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }),
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'gh_issues' },
     { name = 'buffer'},
+    { name = 'path'},
     { name = 'nvim_lua' },
 
     -- For vsnip user.

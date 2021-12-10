@@ -1,4 +1,4 @@
-vim.cmd 'colo nord'
+vim.cmd 'colo everforest'
 
 -- commands
 vim.cmd([[
@@ -42,7 +42,7 @@ local options = {
   scrolloff = 5,
   sidescrolloff = 5,
 
-  guicursor = '',
+  --guicursor = '',
   cursorline = true,
   nu = true,
   relativenumber = true,

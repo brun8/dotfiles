@@ -25,9 +25,6 @@ local function set_keymaps()
   map("v", "<leader>rf", [[ <Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
   map("v", "<leader>rt", [[ <Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
 
-  -- emmet
-  map("i", "<C-y>,", "<Cmd>:EmmetExpandAbbr<CR>", opt)
-
   -- tabular
   map('n', '<leader>tb', '<cmd>:Tab/=<cr>', opt)
   map('v', '<leader>tb', '<cmd>:Tab/=<cr>', opt)
@@ -44,6 +41,7 @@ local function set_keymaps()
   map('n', '<leader>com', '<CMD>Telescope commands<CR>', opt)
   map('n', '<leader>fi', '<CMD>Telescope current_buffer_fuzzy_find<CR>', opt)
   map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', opt)
+  map('n', '<C-\\>', "<CMD>lua require'bruno.telescope'.find_dotfiles()<CR>", opt)
   map('n', '<leader>dot', "<CMD>lua require'bruno.telescope'.find_dotfiles()<CR>", opt)
   map('n', '<leader>em', '<CMD>Telescope symbols<CR>', opt)
   map('i', '<C-\\>', '<CMD>Telescope symbols<CR>', opt)
@@ -70,10 +68,13 @@ local function set_keymaps()
   map('n', '<C-l>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
   map('n', '<leader>rr', ":lua require'harpoon.mark'.rm_file()<CR>", opt)
   map('n', '<leader><C-r>', ":lua require'harpoon.mark'.clear_all()<CR>", opt)
+  map('n', '<leader>x', '<CMD>lua require("telescope").extensions.harpoon.marks()<CR>', opt)
+  -- terminal
+  map('n', '<leader>tu', ":lua require'harpoon.term'.gotoTerminal(1)<cr>i", opt)
 
   --floaterm
-  map('n', '<leader>tt', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', opt)
-  map('n', '<leader>gg', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 lazygit<CR>', opt)
+  --map('n', '<leader>tt', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', opt)
+  --map('n', '<leader>gg', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 lazygit<CR>', opt)
 
   -- goyo
   map('n', '<leader>go', "<CMD>:Goyo<CR>", opt)
@@ -90,8 +91,12 @@ local function set_keymaps()
   map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
   map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
   map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
-  map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-  map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+
+  -- commentary
+  map('v', '<leader>cc', '<Plug>complementary', opt)
+  -- map('n', '<leader>cc', '<Plug>complementary', opt)
+
 end
 
 set_keymaps()
+
