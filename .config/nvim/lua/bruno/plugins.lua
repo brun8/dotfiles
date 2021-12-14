@@ -64,11 +64,10 @@ local function packer_start()
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   -- colorschemes
+  use 'EdenEast/nightfox.nvim'
   use 'sainnhe/everforest'
   use 'ayu-theme/ayu-vim'
-  use 'FrenzyExists/aquarium-vim'
   use 'cocopon/iceberg.vim'
-  use 'rhysd/vim-color-spring-night'
   use 'navarasu/onedark.nvim'
   use 'shaunsingh/nord.nvim'
 end
@@ -98,7 +97,7 @@ local function plugin_configs()
     }
   }
 
-  vim.g.user_emmet_leader_key = '<C-v>'
+  --vim.g.user_emmet_leader_key = '<C-v>'
 
 end
 

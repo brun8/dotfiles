@@ -128,6 +128,9 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+# editor
+export EDITOR="nvim"
+
 # marp
 export CHROME_PATH="/usr/bin/brave-browser"
 
