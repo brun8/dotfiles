@@ -1,5 +1,11 @@
 vim.cmd 'colo everforest'
 
+--vim.cmd [[ highlight Normal guibg=none
+           --highlight NonText guibg=none ]]
+
+vim.cmd [[ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE ]]
+vim.cmd [[ autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE ]]
+
 -- commands
 vim.cmd([[
   augroup WrapInMarkdown
@@ -69,6 +75,9 @@ for k, v in pairs(options) do
   o[k] = v
 end
 
+--vim.cmd [[set bg=light]]
+
 vim.o.shortmess = vim.o.shortmess .. 'c'
+
 
 require'bruno'
