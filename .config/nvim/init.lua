@@ -79,5 +79,4 @@ end
 
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
-
 require'bruno'

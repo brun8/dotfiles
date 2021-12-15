@@ -116,7 +116,7 @@ alias vimconfig="vim ~/.vimrc"
 alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias nvimdir="cd ~/.config/nvim/"
-alias awconfig="nvim ~/.config/awesome/rc.lua"
+alias awconf="nvim ~/.config/awesome/rc.lua"
 alias unb="cd ~/cc/unb/"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
