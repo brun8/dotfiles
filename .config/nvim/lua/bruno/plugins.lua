@@ -57,6 +57,7 @@ local function packer_start()
   -- others
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
   use 'mbbill/undotree'
+  use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
@@ -97,7 +98,9 @@ local function plugin_configs()
     }
   }
 
-  --vim.g.user_emmet_leader_key = '<C-v>'
+  require'colorizer'.setup()
+
+  --vim.g.user_emmet_leader_key = '<C-b>'
 
 end
 
