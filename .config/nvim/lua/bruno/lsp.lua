@@ -59,7 +59,7 @@ local function setup_lsp()
     nvim_lsp[server].setup {}
   end
 
-  setup_sumneko()
+  -- setup_sumneko()
 end
 
 setup_lsp()

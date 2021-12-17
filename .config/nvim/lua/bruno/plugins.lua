@@ -52,6 +52,7 @@ local function packer_start()
   -- terminal
   --use 'voldikss/vim-floaterm'
   -- treesitter
+  --use 'fatih/vim-go'
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
   -- others

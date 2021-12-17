@@ -73,8 +73,9 @@ height = 27
 
 inherit = bar/base
 modules-left = powermenu i3
-modules-center = xwindow mpd
-modules-right = backlight temperature battery date notify
+modules-center = date
+;modules-center = xwindow mpd
+modules-right =  temperature
 
 tray-position = center
 tray-padding = -2
