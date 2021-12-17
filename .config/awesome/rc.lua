@@ -139,7 +139,7 @@ awful.screen.connect_for_each_screen(function(s)
   set_wallpaper(s)
 
   -- Each screen has its own tag table.
-  awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
+  awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[2])
 end)
 -- }}}
 
@@ -392,7 +392,7 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 1, 4 do
   globalkeys = gears.table.join(globalkeys,
     -- View tag only.
     awful.key(

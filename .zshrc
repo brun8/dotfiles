@@ -102,7 +102,7 @@ alias zshconfig="vim ~/.zshrc"
 
 # ALIASES
 
-# alias rm=trash
+alias rm=trash
 alias vi=nvim
 alias nvi=nvim
 alias python=python3
