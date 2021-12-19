@@ -1,12 +1,12 @@
 # dependencies
 
 # neovim
-  packer
-  lsp
-  ripgrep
+  - packer
+  - lsp
+  - ripgrep
 
 # awesomewm
-  polybar
-  feh
-  picom
+  - polybar
+  - feh
+  - picom
 

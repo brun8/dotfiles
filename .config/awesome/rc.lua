@@ -52,7 +52,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+--beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(require'theme')
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -456,7 +457,13 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+local dpi = require("beautiful.xresources").apply_dpi
 awful.rules.rules = {
+  { rule_any = {class = {"Polybar"}},
+    properties = {
+      focusable = false,
+    }
+  },
   -- All clients will match this rule.
   { rule = { },
     properties = { border_width = beautiful.border_width,
