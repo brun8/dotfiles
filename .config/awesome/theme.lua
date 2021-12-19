@@ -56,7 +56,7 @@ theme.notification_fg = '#a6accd'
 theme.notification_bg = '#121622'
 theme.notification_opacity = 1
 
---theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(2)
 theme.border_normal = "#000000"
 theme.border_focus  = "#f2777a"

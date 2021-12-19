@@ -459,11 +459,6 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 local dpi = require("beautiful.xresources").apply_dpi
 awful.rules.rules = {
-  { rule_any = {class = {"Polybar"}},
-    properties = {
-      focusable = false,
-    }
-  },
   -- All clients will match this rule.
   { rule = { },
     properties = { border_width = beautiful.border_width,
@@ -475,6 +470,14 @@ awful.rules.rules = {
            screen = awful.screen.preferred,
            placement = awful.placement.no_overlap+awful.placement.no_offscreen
    }
+  },
+
+  -- Polybar border
+  { rule_any = {class = {"Polybar"} },
+    properties = {
+      border_width = false,
+      focusable = false,
+    }
   },
 
   -- Floating clients.
@@ -583,13 +586,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- custom
-
--- gaps
-beautiful.useless_gap = 7
 
 -- auto-start apps
 require("auto")
 
--- theme
---beautiful.init(require'theme')
