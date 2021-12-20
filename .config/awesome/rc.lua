@@ -457,7 +457,6 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
-local dpi = require("beautiful.xresources").apply_dpi
 awful.rules.rules = {
   -- All clients will match this rule.
   { rule = { },

@@ -64,7 +64,7 @@ theme.border_marked = "#91231c"
 
 theme.tasklist_plain_task_name = true
 theme.tasklist_disable_icon = true
-theme.gap_single_client = false
+theme.gap_single_client = true
 
 -- naughty configuration
 theme.notification_border_color = theme.bg_light

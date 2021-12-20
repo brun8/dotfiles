@@ -17,59 +17,69 @@
 ;==========================================================
 
 [colors]
-background = #2d2d2d
-background-alt = #363636
-foreground = #d3d0c8
-primary = #6699cc
-secondary = #66cccc
-alert = #652566
-disabled = #747369
+background = #0b0d0a
+black = #121418
+color8 = #675f54
 
-red = #e65256
-green = #78cd78
-yellow = #ffc85a
-blue = #4a8ccd
-magenta = #d080d0
-cyan = #43cbcb
-white = #d3d0c8
+red = #c94234
+red2 = #ff645a
 
-bred = #f2777a
-bgreen = #99cc99
-byellow = #ffcc66
-bblue = #6699cc
-bmagenta = #cc99cc
-bcyan = #66cccc
-bwhite = #f2f0ec
+green = #85c54c
+green2 = #98e036
+
+dark_yellow = #f5ae2e
+yellow = #e0d561
+
+
+blue = #1398b9
+blue2 = #5fdaff
+
+color5 = #d0633d
+color13 = #ff9269
+
+color6 = #509552
+color14 = #84f088
+
+color7 = #e5c6aa
+foreground = #e5c6aa
+color15 = #f6f7ec
 
 [bar/bar]
+;dimensions
 width = 100%
-height = 4%
-radius = 4
-fixed-center = true
+height = 25
+offset-y = 0
+offset-x = 0
 
+;location
+bottom = false
+override-redirect = false
+
+;colors
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 0
 
-border-size = 10
-border-color = #00000000
+border-top-size = 0
+border-bottom-size = 0
+border-right-size = 0
+border-left-size = 0
 
 padding-left = 1
 padding-right = 1
 
 module-margin = 1
 
-separator = |
-separator-foreground = ${colors.disabled}
+;separator = |
+;separator-foreground = ${colors.disabled}
 
-
-font-0=FiraCode Nerd Font:size=12:weight=Bold;0
-font-1=Material Design Icons Desktop:size=12;0
+font-0 = SF Mono:Semibold:size=9.5;3
+font-1 = Symbols Nerd Font:pixelsize=12;3
 
 
 modules-left = powermenu xworkspaces xwindow
-modules-right =  date pulseaudio battery wlan eth filesystem memory cpu
+modules-right =  date pulseaudio
 modules-center = spotify
 
 cursor-click = pointer
@@ -77,7 +87,7 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
-; tray-position = right
+tray-position = right
 
 ; wm-restack = generic
 ; wm-restack = bspwm
@@ -109,7 +119,7 @@ interval = 1
 type = internal/xworkspaces
 
 label-active = %name%
-label-active-foreground = ${colors.green}
+label-active-foreground = ${colors.color12}
 #label-active-background = ${colors.blue}
 #label-active-underline= ${colors.blue}
 label-active-padding = 1
