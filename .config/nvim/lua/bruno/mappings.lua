@@ -9,7 +9,15 @@ local function set_keymaps()
   map('t', '<esc>', '<c-\\><c-n>', opt)
 
   -- copy paste
-  map('x', '<leader>p', '"_dP', opt)
+  -- void
+  map('x', '<leader>v', '"_dP', opt)
+
+  -- system
+  map('n', '<leader>y', '"+y', opt)
+  map('n', '<leader>p', '"+p', opt)
+  map('v', '<leader>y', '"+y', opt)
+  map('v', '<leader>p', '"+p', opt)
+  map('v', '<leader>P', '"+P', opt)
 
   -- netrw
   map('n', '<leader>nn', '<CMD>Explore<CR>', opt)

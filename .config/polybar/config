@@ -41,7 +41,7 @@ color6 = #509552
 color14 = #84f088
 
 color7 = #e5c6aa
-foreground = #e5c6aa
+foreground = #f6f7ec
 color15 = #f6f7ec
 
 [bar/bar]
