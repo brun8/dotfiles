@@ -119,14 +119,14 @@ interval = 1
 type = internal/xworkspaces
 
 label-active = %name%
-label-active-foreground = ${colors.color12}
+label-active-foreground = ${colors.foreground}
 #label-active-background = ${colors.blue}
 #label-active-underline= ${colors.blue}
 label-active-padding = 1
 
 label-occupied = %name%
 label-occupied-padding = 1
-label-occupied-foreground = ${colors.bblue}
+label-occupied-foreground = ${colors.blue2}
 
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
@@ -289,11 +289,11 @@ menu-0-1 = 
 type = internal/pulseaudio
 
 format-volume-prefix = "墳 "
-format-volume-prefix-foreground = ${colors.bblue}
+format-volume-prefix-foreground = ${colors.blue}
 format-volume = <label-volume>
 
 label-volume = %percentage%%
-label-volume-foreground = ${colors.bblue}
+label-volume-foreground = ${colors.blue}
 
 format-muted-prefix-foreground = ${colors.red}
 format-muted-prefix = " "
@@ -315,10 +315,10 @@ label-indicator-background = ${colors.secondary}
 [module/memory]
 type = internal/memory
 
-label-foreground = ${colors.bblue}
+label-foreground = ${colors.blue}
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.bblue}
+format-prefix-foreground = ${colors.blue}
 label = %percentage_used:2%%
 
 [module/cpu]
