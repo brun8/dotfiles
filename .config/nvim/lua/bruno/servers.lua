@@ -1,4 +1,10 @@
---local servers = { "gopls", "solargraph", "tsserver", "pyright", "ccls", "tailwindcss" }
-local servers = { "gopls", "solargraph", "tsserver", "pyright", "ccls" }
+local servers = {
+  "gopls",
+  "solargraph",
+  "tsserver",
+  "pyright",
+  "ccls",
+  --"tailwindcss",
+}
 
 return servers

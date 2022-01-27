@@ -147,3 +147,4 @@ export FZF_DEFAULT_OPS="--extended"
 # lua language server
 export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
 alias luamake=/home/bruno/tools/lua-language-server/3rd/luamake/luamake
+
