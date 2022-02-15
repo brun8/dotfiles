@@ -23,16 +23,16 @@ local function packer_start()
   use 'wbthomason/packer.nvim'
   -- lsp
   use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
   -- cmp
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
-  --use 'hrsh7th/cmp-vsnip'
-  --use 'hrsh7th/vim-vsnip'
+  -- snippets
   use 'L3MON4D3/LuaSnip'
-  use "saadparwaiz1/cmp_luasnip"
+  use 'saadparwaiz1/cmp_luasnip'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -78,12 +78,31 @@ end
 
 local function plugin_configs()
 
+  local lsp_installer = require'nvim-lsp-installer'
+
+  -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+  -- or if the server is already installed).
+  lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+    -- before passing it onwards to lspconfig.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+  end)
+
   require("todo-comments").setup {}
 
   require("nvim-autopairs").setup {}
 
   require'nvim-treesitter.configs'.setup {
     highlight = { enable = true },
+    ensure_installed = "maintained",
     incremental_selection = {
       enable = true,
       keymaps = {

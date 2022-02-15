@@ -4,6 +4,7 @@ local servers = {
   "tsserver",
   "pyright",
   "ccls",
+  "jdtls",
   --"tailwindcss",
 }
 

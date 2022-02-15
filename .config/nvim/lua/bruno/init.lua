@@ -1,4 +1,5 @@
 require'bruno.plugins'
+require'bruno.snippets'
 require'bruno.mappings'
 require'bruno.telescope'
 require'bruno.lsp'
