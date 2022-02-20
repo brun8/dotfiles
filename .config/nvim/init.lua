@@ -31,6 +31,15 @@ vim.cmd [[ autocmd filetype cpp nnoremap <leader>cpp :w <bar> exec '!g++ '.shell
 local g = vim.g
 local o = vim.o
 
+--g.terminal_open = false
+function toggle_terminal()
+  --if g.terminal_open then
+  --else
+  vim.cmd [[15sp | :terminal]]
+  --end
+  --g.terminal_open = false
+end
+
 g.mapleader = ' '
 
 local options = {

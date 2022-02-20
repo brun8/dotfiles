@@ -92,6 +92,32 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+# golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# editor
+export EDITOR="nvim"
+
+# marp
+export CHROME_PATH="/usr/bin/brave-browser"
+
+# android
+export PATH=$HOME/Android/Sdk/emulator:$PATH
+alias android="emulator -avd Pixel_3a_API_30_x86 -dns-server 8.8.8.8 -no-audio"
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended"
+
+# lua language server
+export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
+alias luamake=/home/bruno/tools/lua-language-server/3rd/luamake/luamake
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -119,32 +145,8 @@ alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias nvimdir="cd ~/.config/nvim/"
 alias awconf="nvim ~/.config/awesome/rc.lua"
 alias unb="cd ~/cc/unb/"
+alias links="$EDITOR ~/.links.md"
+
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-
-# golang
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# editor
-export EDITOR="nvim"
-
-# marp
-export CHROME_PATH="/usr/bin/brave-browser"
-
-# android
-export PATH=$HOME/Android/Sdk/emulator:$PATH
-alias android="emulator -avd Pixel_3a_API_30_x86 -dns-server 8.8.8.8 -no-audio"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended"
-
-# lua language server
-export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
-alias luamake=/home/bruno/tools/lua-language-server/3rd/luamake/luamake
 

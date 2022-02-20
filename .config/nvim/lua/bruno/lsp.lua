@@ -56,7 +56,11 @@ local function setup_lsp()
 
   local servers = require'bruno.servers'
   for _, server in ipairs(servers) do
-    nvim_lsp[server].setup {}
+    nvim_lsp[server].setup {
+      on_attach = function ()
+        print("attached " .. server .. ".")
+      end
+    }
   end
 
   -- setup_sumneko()

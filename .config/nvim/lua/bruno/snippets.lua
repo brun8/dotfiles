@@ -1,6 +1,3 @@
---if vim.g.snippets ~= "luasnip" then
-  --return
---end
 local ls = require'luasnip'
 local types = require'luasnip.util.types'
 
@@ -48,19 +45,41 @@ vim.keymap.set(
 
 local s = ls.s
 local i = ls.insert_node
+local t = ls.text_node
 local fmt = require'luasnip.extras.fmt'.fmt
 local rep = require('luasnip.extras').rep
+
+-- competitive programming
+local cp_template = {
+
+}
 
 ls.snippets = {
   all = {
     s("pens", fmt("let's go pens", {}))
   },
+  cpp = {
 
+  },
+  go = {
+    s("func",
+      fmt("func {}({}) {} {{\n\t{}\n}}", { i(1, "name"), i(2), i(3), i(0) })
+    )
+  },
   lua = {
     s(
       "req",
       fmt("local {} = require('{}')", {i(1), rep(1)})
     ),
   },
+  typescript = {
+    s(
+      "state",
+      fmt(
+        "const [{}, {}] = useState({});",
+        {i(1), i(2), i(3)}
+      )
+    )
+  }
 }
 
