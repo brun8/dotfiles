@@ -56,13 +56,21 @@ local cp_template = {
 
 ls.snippets = {
   all = {
-    s("pens", fmt("let's go pens", {}))
+    s("pens", fmt("let's go pens", {})),
   },
   cpp = {
-
+    s(
+      "fori",
+      fmt("for (int {}=0; {}<{};{}++) {{\n \n}};", {i(1, "i"), rep(1), i(2, "n"), rep(1)})
+    ),
+    s(
+      "cout",
+      fmt("cout << {} << \"\\n\";", {i(0)})
+    )
   },
   go = {
-    s("func",
+    s(
+      "func",
       fmt("func {}({}) {} {{\n\t{}\n}}", { i(1, "name"), i(2), i(3), i(0) })
     )
   },
@@ -72,7 +80,7 @@ ls.snippets = {
       fmt("local {} = require('{}')", {i(1), rep(1)})
     ),
   },
-  typescript = {
+  typescriptreact = {
     s(
       "state",
       fmt(
