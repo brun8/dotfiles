@@ -95,6 +95,9 @@ source $ZSH/oh-my-zsh.sh
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
 
+# node
+export PATH=$PATH:/opt/node/bin
+
 # golang
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
@@ -102,17 +105,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # editor
 export EDITOR="nvim"
-
-# marp
-export CHROME_PATH="/usr/bin/brave-browser"
-
-# android
-export PATH=$HOME/Android/Sdk/emulator:$PATH
-alias android="emulator -avd Pixel_3a_API_30_x86 -dns-server 8.8.8.8 -no-audio"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended"
 
 # lua language server
 export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
@@ -129,7 +121,7 @@ alias zshconfig="vi ~/.zshrc"
 
 # ALIASES
 
-alias rm=trash
+#alias rm=trash
 alias vi=nvim
 alias nvi=nvim
 alias python=python3
@@ -146,7 +138,6 @@ alias nvimdir="cd ~/.config/nvim/"
 alias awconf="nvim ~/.config/awesome/rc.lua"
 alias unb="cd ~/cc/unb/"
 alias links="$EDITOR ~/.links.md"
-
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 

@@ -61,11 +61,31 @@ ls.snippets = {
   cpp = {
     s(
       "fori",
-      fmt("for (int {}=0; {}<{};{}++) {{\n \n}};", {i(1, "i"), rep(1), i(2, "n"), rep(1)})
+      fmt("for (int {}=0; {}<{};{}++) {{\n\t\n}}", {i(1, "i"), rep(1), i(2, "n"), rep(1)})
     ),
     s(
       "cout",
       fmt("cout << {} << \"\\n\";", {i(0)})
+    ),
+    s(
+      "templ",
+      fmt([[
+        #include <bits/stdc++.h>
+        #define ll long long
+        #define pb push_back
+
+        using namespace std;
+
+        int main() {{
+          ios::sync_with_stdio(0);
+          cin.tie(0);
+
+          int n; cin >> n;
+          while (n--) {{
+            {}
+          }}
+        }}
+      ]], {i(1)})
     )
   },
   go = {
@@ -86,6 +106,13 @@ ls.snippets = {
       fmt(
         "const [{}, {}] = useState({});",
         {i(1), i(2), i(3)}
+      )
+    ),
+    s(
+      "effect",
+      fmt(
+        "useEffect(() =>{{\n\t{}\n}}, [{}])",
+        {i(1), i(2)}
       )
     )
   }
