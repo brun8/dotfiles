@@ -1,7 +1,7 @@
-vim.cmd 'colo nord'
+vim.cmd 'colo nightfox'
 
-vim.cmd [[ highlight Normal guibg=none
-           highlight NonText guibg=none ]]
+--vim.cmd [[ highlight Normal guibg=none
+           --highlight NonText guibg=none ]]
 
 --vim.cmd [[ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE ]]
 --vim.cmd [[ autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE ]]

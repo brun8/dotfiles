@@ -51,10 +51,6 @@ local function scrollbar()
   return chars[index]
 end
 
-local function metals_status()
-  return vim.g["metals_status"] or ""
-end
-
 local function readonly()
   if opt.readonly:get() then
     return "  "
@@ -62,6 +58,7 @@ local function readonly()
     return ""
   end
 end
+
 -- TODO is there a way to do this without making it global?
 function Super_custom_status_line()
   return table.concat({
@@ -75,7 +72,6 @@ function Super_custom_status_line()
     "%#StatusWarn#",
     err_count("Warn"),
     "%#StatusLine#",
-    metals_status(),
     "%=", -- Left and Right divider
     "%l, ", -- line number
     "%c ", -- column number

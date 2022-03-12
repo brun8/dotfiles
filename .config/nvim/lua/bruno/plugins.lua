@@ -43,36 +43,20 @@ local function packer_start()
   use "folke/todo-comments.nvim"
   -- harpoon
   use 'ThePrimeagen/harpoon'
-  -- refactoring
-  use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
-    }
-  }
-  -- terminal
-  --use 'voldikss/vim-floaterm'
   -- treesitter
   --use 'fatih/vim-go'
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
   -- others
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
-  use 'mbbill/undotree'
   use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
   -- colorschemes
   use 'EdenEast/nightfox.nvim'
   use 'sainnhe/everforest'
-  use 'ayu-theme/ayu-vim'
-  use 'cocopon/iceberg.vim'
-  use 'navarasu/onedark.nvim'
   use 'shaunsingh/nord.nvim'
 end
 
