@@ -58,6 +58,7 @@ local function packer_start()
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
   -- colorschemes
+  use 'rebelot/kanagawa.nvim'
   use 'EdenEast/nightfox.nvim'
   use 'sainnhe/everforest'
   use 'shaunsingh/nord.nvim'

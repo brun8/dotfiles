@@ -1,5 +1,8 @@
-vim.cmd 'colo nightfox'
-print('aqui')
+local colorscheme_cmd = 'colorscheme kanagawa'
+local success, err = pcall(vim.cmd, colorscheme_cmd)
+if not success then
+  vim.api.nvim_err_writeln(err)
+end
 
 --vim.cmd [[ highlight Normal guibg=none
            --highlight NonText guibg=none ]]
@@ -7,7 +10,7 @@ print('aqui')
 --vim.cmd [[ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE ]]
 --vim.cmd [[ autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE ]]
 
--- commands
+--commands
 vim.cmd([[
   augroup WrapInMarkdown
   autocmd!
@@ -32,19 +35,10 @@ vim.cmd [[ autocmd filetype cpp nnoremap <leader>cpp :w <bar> exec '!g++ '.shell
 local g = vim.g
 local o = vim.o
 
---g.terminal_open = false
-function toggle_terminal()
-  --if g.terminal_open then
-  --else
-  vim.cmd [[15sp | :terminal]]
-  --end
-  --g.terminal_open = false
-end
-
 g.mapleader = ' '
 
 local options = {
-  completeopt = "menuone,noselect,noinsert",
+
   backup = false,
   errorbells = false,
   hidden = false,
