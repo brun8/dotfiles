@@ -58,7 +58,6 @@ local function setup_lsp()
   for _, server in ipairs(servers) do
     nvim_lsp[server].setup {
       on_attach = function ()
-        print("attached " .. server .. ".")
       end
     }
   end

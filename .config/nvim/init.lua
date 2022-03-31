@@ -1,4 +1,5 @@
 vim.cmd 'colo nightfox'
+print('aqui')
 
 --vim.cmd [[ highlight Normal guibg=none
            --highlight NonText guibg=none ]]
@@ -46,7 +47,7 @@ local options = {
   completeopt = "menuone,noselect,noinsert",
   backup = false,
   errorbells = false,
-  hidden = true,
+  hidden = false,
 
   -- search
   hlsearch = false,

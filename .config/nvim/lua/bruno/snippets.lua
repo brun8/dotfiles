@@ -49,11 +49,6 @@ local t = ls.text_node
 local fmt = require'luasnip.extras.fmt'.fmt
 local rep = require('luasnip.extras').rep
 
--- competitive programming
-local cp_template = {
-
-}
-
 ls.snippets = {
   all = {
     s("pens", fmt("let's go pens", {})),
@@ -85,7 +80,7 @@ ls.snippets = {
             {}
           }}
         }}
-      ]], {i(1)})
+      ]], {i(0)})
     )
   },
   go = {

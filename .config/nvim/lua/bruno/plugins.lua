@@ -21,6 +21,8 @@ local function packer_start()
 
   -- plugins
   use 'wbthomason/packer.nvim'
+
+  use '/home/bruno/cc/fun/pmore.nvim'
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
@@ -54,6 +56,7 @@ local function packer_start()
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
+  use 'tpope/vim-fugitive'
   -- colorschemes
   use 'EdenEast/nightfox.nvim'
   use 'sainnhe/everforest'
