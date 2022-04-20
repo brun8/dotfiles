@@ -28,27 +28,18 @@ local function set_keymaps()
   -- muda " para '
   map("n", "<leader>\''", "f\"cs\"'", {noremap = false, silent = true, expr = false})
 
-  -- refactoring
-  map("v", "<leader>re", [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
-  map("v", "<leader>rf", [[ <Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
-  map("v", "<leader>rt", [[ <Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
-
-  -- tabular
-  map('n', '<leader>tb', '<cmd>:Tab/=<cr>', opt)
-  map('v', '<leader>tb', '<cmd>:Tab/=<cr>', opt)
-  map('n', '<leader>tab', '<cmd>:Tab/|<cr>', opt)
-  map('v', '<leader>tab', '<cmd>:Tab/|<cr>', opt)
-
   -- telescope
   map('n', '<leader>ff', '<CMD>Telescope find_files<CR>', opt)
   map('n', '<leader>fb', '<CMD>Telescope buffers<CR>', opt)
   map('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opt)
   map('n', '<C-p>', '<CMD>Telescope git_files<CR>', opt)
+  map('n', '<leader>fs', '<CMD>Telescope git_status<CR>', opt)
   map('n', '<leader>gc', '<CMD>Telescope git_commits<CR>', opt)
   map('n', '<leader>gb', '<CMD>Telescope git_branches<CR>', opt)
   map('n', '<leader>com', '<CMD>Telescope commands<CR>', opt)
   map('n', '<leader>fi', '<CMD>Telescope current_buffer_fuzzy_find<CR>', opt)
   map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', opt)
+  map('n', '<leader>fc', '<CMD>Telescope lsp_code_actions<CR>', opt)
   map('n', '<C-\\>', "<CMD>lua require'bruno.telescope'.find_dotfiles()<CR>", opt)
   map('n', '<leader>dot', "<CMD>lua require'bruno.telescope'.find_dotfiles()<CR>", opt)
   map('n', '<leader>em', '<CMD>Telescope symbols<CR>', opt)
@@ -70,10 +61,10 @@ local function set_keymaps()
   -- harpoon
   map('n', '<leader>mm', "<cmd>lua require'harpoon.mark'.add_file()<cr>", opt)
   map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
-  map('n', '<a-1>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
-  map('n', '<a-2>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
-  map('n', '<a-3>', ":lua require'harpoon.ui'.nav_file(3)<CR>", opt)
-  map('n', '<a-4>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
+  map('n', '<C-h>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
+  map('n', '<C-j>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
+  map('n', '<C-k>', ":lua require'harpoon.ui'.nav_file(3)<CR>", opt)
+  map('n', '<C-l>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
   map('n', '<leader>rr', ":lua require'harpoon.mark'.rm_file()<CR>", opt)
   map('n', '<leader><C-r>', ":lua require'harpoon.mark'.clear_all()<CR>", opt)
   map('n', '<leader>x', '<CMD>lua require("telescope").extensions.harpoon.marks()<CR>', opt)
@@ -92,7 +83,6 @@ local function set_keymaps()
 
   -- lsp
   map('n', '<leader>ee', '<cmd>:edit<cr>', opt)
-  map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
   map('n', '<leader>de', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opt)
   map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
   map('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)

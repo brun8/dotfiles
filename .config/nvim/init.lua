@@ -1,8 +1,9 @@
-local colorscheme_cmd = 'colorscheme kanagawa'
-local success, err = pcall(vim.cmd, colorscheme_cmd)
-if not success then
-  vim.api.nvim_err_writeln(err)
-end
+--local colorscheme_cmd = 'colo kanagawa'
+--local success, err = pcall(vim.cmd, colorscheme_cmd)
+--if not success then
+  --vim.api.nvim_err_writeln(err)
+--end
+vim.api.nvim_command('colorscheme kanagawa')
 
 --vim.cmd [[ highlight Normal guibg=none
            --highlight NonText guibg=none ]]

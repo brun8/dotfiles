@@ -110,7 +110,7 @@ local function plugin_configs()
 
   require'colorizer'.setup()
 
-  --vim.g.user_emmet_leader_key = '<C-b>'
+  vim.g.user_emmet_leader_key = '<C-x>'
 
 end
 

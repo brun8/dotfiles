@@ -1,3 +1,4 @@
+require'bruno.globals'
 require'bruno.plugins'
 require'bruno.snippets'
 require'bruno.mappings'
