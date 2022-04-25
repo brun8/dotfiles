@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 local function set_keymaps()
 
@@ -60,14 +60,13 @@ local function set_keymaps()
 
   -- harpoon
   map('n', '<leader>mm', "<cmd>lua require'harpoon.mark'.add_file()<cr>", opt)
-  map('n', '<C-x>', ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", opt)
-  map('n', '<C-h>', ":lua require'harpoon.ui'.nav_file(1)<CR>", opt)
-  map('n', '<C-j>', ":lua require'harpoon.ui'.nav_file(2)<CR>", opt)
-  map('n', '<C-k>', ":lua require'harpoon.ui'.nav_file(3)<CR>", opt)
-  map('n', '<C-l>', ":lua require'harpoon.ui'.nav_file(4)<CR>", opt)
-  map('n', '<leader>rr', ":lua require'harpoon.mark'.rm_file()<CR>", opt)
-  map('n', '<leader><C-r>', ":lua require'harpoon.mark'.clear_all()<CR>", opt)
-  map('n', '<leader>x', '<CMD>lua require("telescope").extensions.harpoon.marks()<CR>', opt)
+  map('n', '<C-x>', function() require'harpoon.ui'.toggle_quick_menu() end)
+  map('n', '<C-h>', function() require'harpoon.ui'.nav_file(1) end)
+  map('n', '<C-j>', function() require'harpoon.ui'.nav_file(2) end)
+  map('n', '<C-k>', function() require'harpoon.ui'.nav_file(3) end)
+  map('n', '<C-l>', function() require'harpoon.ui'.nav_file(4) end)
+  map('n', '<leader>rr', function() require'harpoon.mark'.rm_file() end)
+  map('n', '<leader><C-r>', function() require'harpoon.mark'.clear_all() end)
   -- terminal
   map('n', '<leader>tu', ":lua require'harpoon.term'.gotoTerminal(1)<cr>i", opt)
 

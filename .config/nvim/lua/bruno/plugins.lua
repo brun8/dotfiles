@@ -88,20 +88,6 @@ local function plugin_configs()
 
   require("nvim-autopairs").setup {}
 
-  require'nvim-treesitter.configs'.setup {
-    highlight = { enable = true },
-    ensure_installed = "maintained",
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = ".",
-        scope_incremental = "s",
-        node_decremental = ",",
-      },
-    },
-  }
-
   require'harpoon'.setup {
     global_settings = {
       enter_on_sendcmd = true,
@@ -110,7 +96,7 @@ local function plugin_configs()
 
   require'colorizer'.setup()
 
-  vim.g.user_emmet_leader_key = '<C-x>'
+  --vim.g.user_emmet_leader_key = '<C-x>'
 
 end
 

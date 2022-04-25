@@ -3,7 +3,7 @@
 --if not success then
   --vim.api.nvim_err_writeln(err)
 --end
-vim.api.nvim_command('colorscheme kanagawa')
+vim.api.nvim_command('colo kanagawa')
 
 --vim.cmd [[ highlight Normal guibg=none
            --highlight NonText guibg=none ]]
