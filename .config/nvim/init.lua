@@ -5,11 +5,12 @@
 --end
 vim.api.nvim_command('colo kanagawa')
 
---vim.cmd [[ highlight Normal guibg=none
-           --highlight NonText guibg=none ]]
-
---vim.cmd [[ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE ]]
---vim.cmd [[ autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE ]]
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+  pattern = '*.astro',
+  callback = function()
+    vim.api.nvim_command('set filetype=astro')
+  end
+})
 
 --commands
 vim.cmd([[
@@ -40,6 +41,7 @@ g.mapleader = ' '
 
 local options = {
 
+  filetype = true,
   backup = false,
   errorbells = false,
   hidden = false,

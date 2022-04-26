@@ -1,4 +1,5 @@
 local servers = {
+  "astro",
   "gopls",
   "solargraph",
   --"tsserver",
