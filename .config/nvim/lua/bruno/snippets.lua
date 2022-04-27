@@ -45,11 +45,11 @@ vim.keymap.set(
 
 local s = ls.s
 local i = ls.insert_node
-local t = ls.text_node
+local f = ls.function_node
 local fmt = require'luasnip.extras.fmt'.fmt
 local rep = require('luasnip.extras').rep
 
-ls.snippets = {
+ls.add_snippets(nil, {
   all = {
     s("pens", fmt("let's go pens", {})),
   },
@@ -100,7 +100,15 @@ ls.snippets = {
       "state",
       fmt(
         "const [{}, {}] = useState({});",
-        {i(1), i(2), i(3)}
+        { i(1),
+          f(function (nodes)
+            local str = nodes[1][1]
+            if str == '' then
+              return ''
+            end
+            return 'set' .. str:gsub('%a', string.upper, 1)
+          end, {1}),
+          i(2)}
       )
     ),
     s(
@@ -111,5 +119,5 @@ ls.snippets = {
       )
     )
   }
-}
+})
 
