@@ -12,6 +12,15 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   end
 })
 
+-- seta o compilador g++ pra arquivos c++
+-- :make compila o arquivo e gera o excecutavel com o mesmo nome
+vim.api.nvim_create_autocmd({'BufEnter'}, {
+  pattern = "*.cpp",
+  callback = function ()
+    vim.api.nvim_command("set makeprg=g++\\ %\\ -o\\ %<")
+  end
+})
+
 --commands
 vim.cmd([[
   augroup WrapInMarkdown
@@ -19,6 +28,7 @@ vim.cmd([[
   autocmd FileType markdown setlocal wrap
   augroup END
 ]])
+
 
 vim.cmd([[
   fun! TrimWhiteSpace()
@@ -32,7 +42,8 @@ vim.cmd([[
 ]])
 
 -- compilar cpp
-vim.cmd [[ autocmd filetype cpp nnoremap <leader>cpp :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR> ]]
+--vim.cmd [[ autocmd filetype cpp nnoremap <leader>cpp :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR> ]]
+
 
 local g = vim.g
 local o = vim.o
