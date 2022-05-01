@@ -1,7 +1,13 @@
+local actions = require('telescope.actions')
 require'telescope'.setup{
   defaults = {
     prompt_prefix = '🍛 ',
-    file_ignore_patterns = { "node%_modules/.*" }
+    file_ignore_patterns = { "node%_modules/.*" },
+    mappings = {
+      i = {
+        ['C-q'] = actions.send_to_qflist
+      }
+    }
   },
   extensions = {
     fzf = {
