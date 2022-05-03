@@ -7,7 +7,7 @@ vim.api.nvim_command('colo kanagawa')
 
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   pattern = '*.astro',
-  callback = function()
+  callback = function ()
     vim.api.nvim_command('set filetype=astro')
   end
 })
@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd({'BufEnter'}, {
   pattern = "*.cpp",
   callback = function ()
     vim.api.nvim_command("set makeprg=g++\\ %\\ -o\\ %<")
+    vim.api.nvim_set_keymap('n', '<leader>cpp', '<cmd>make<cr>', {silent=true})
   end
 })
 
