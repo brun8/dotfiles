@@ -19,22 +19,24 @@ local function packer_start()
   local use = packer.use
   packer.reset()
 
-  -- plugins
+  -- packer
   use 'wbthomason/packer.nvim'
 
-  use '/home/bruno/cc/fun/pmore.nvim'
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
+
   -- cmp
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
+
   -- snippets
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -43,25 +45,30 @@ local function packer_start()
   use 'ThePrimeagen/git-worktree.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use "folke/todo-comments.nvim"
+
   -- harpoon
   use 'ThePrimeagen/harpoon'
+
   -- treesitter
   --use 'fatih/vim-go'
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
+
   -- others
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
-  use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
+  use 'nvim-lualine/lualine.nvim'
+
   -- colorschemes
   use 'rebelot/kanagawa.nvim'
   use 'EdenEast/nightfox.nvim'
   use 'sainnhe/everforest'
   use 'shaunsingh/nord.nvim'
+
 end
 
 local function plugin_configs()
@@ -84,6 +91,27 @@ local function plugin_configs()
     server:setup(opts)
   end)
 
+  require("lualine").setup {
+    options = {
+      theme = 'iceberg_dark',
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_x = {''},
+        lualine_y = {''},
+        lualine_z = {''}
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+      },
+    }
+  }
+
   require("todo-comments").setup {}
 
   require("nvim-autopairs").setup {}
@@ -93,8 +121,6 @@ local function plugin_configs()
       enter_on_sendcmd = true,
     }
   }
-
-  require'colorizer'.setup()
 
   --vim.g.user_emmet_leader_key = '<C-x>'
 

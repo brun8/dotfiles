@@ -1,12 +1,11 @@
 local servers = {
-  "astro",
-  "gopls",
+  --"gopls",
   "solargraph",
-  --"tsserver",
-  "pyright",
+  "tsserver",
+  --"pyright",
   "ccls",
   "jdtls",
-  "tailwindcss",
+  --"tailwindcss",
 }
 
 return servers
