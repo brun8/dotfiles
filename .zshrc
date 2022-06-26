@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # export PATH="$PATH:$HOME/.rvm/bin"
 #source "/etc/profile.d/rvm.sh"
 
+source ~/programs/zsh-z/zsh-z.plugin.zsh
+
 # node
 export PATH=$PATH:/opt/node/bin
 
@@ -145,3 +147,4 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 export PNPM_HOME="/home/bruno/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+

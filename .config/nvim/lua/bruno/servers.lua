@@ -1,10 +1,10 @@
 local servers = {
   --"gopls",
-  "solargraph",
-  "tsserver",
+  --"solargraph",
+  --"tsserver",
   --"pyright",
-  "ccls",
-  "jdtls",
+  --"ccls",
+  --"jdtls",
   --"tailwindcss",
 }
 
