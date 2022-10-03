@@ -52,11 +52,20 @@ local rep = require('luasnip.extras').rep
 ls.add_snippets(nil, {
   all = {
     s("pens", fmt("let's go pens", {})),
+    s("vamos", fmt("vamos cruzeiro", {})),
   },
   cpp = {
     s(
+      "vii",
+      fmt("vector<int> {};", {i(1, "v")})
+    ),
+    s(
+      "pii",
+      fmt("pair<{}, {}> {};", {i(1, "int"), i(2, "int"), i(3, "p")})
+    ),
+    s(
       "fori",
-      fmt("for (int {}=0; {}<{};{}++) {{\n\t\n}}", {i(1, "i"), rep(1), i(2, "n"), rep(1)})
+      fmt("for (int {}=0; {}<{};{}++) {{\n\t{}\n}}", {i(1, "i"), rep(1), i(2, "n"), rep(1), i(3)})
     ),
     s(
       "cout",
@@ -66,17 +75,20 @@ ls.add_snippets(nil, {
       "templ",
       fmt([[
         #include <bits/stdc++.h>
+        using namespace std;
+
         #define ll long long
         #define pb push_back
 
-        using namespace std;
+        typedef pair<int, int> pii;
 
         int main() {{
           ios::sync_with_stdio(0);
           cin.tie(0);
+          cout.tie(0);
 
-          int n; cin >> n;
-          while (n--) {{
+          int t; cin >> t;
+          while (t--) {{
             {}
           }}
         }}
@@ -99,7 +111,7 @@ ls.add_snippets(nil, {
     s(
       "state",
       fmt(
-        "const [{}, {}] = useState({});",
+        "const [{}, {}] = useState({})",
         { i(1),
           f(function (nodes)
             local str = nodes[1][1]
@@ -114,7 +126,7 @@ ls.add_snippets(nil, {
     s(
       "effect",
       fmt(
-        "useEffect(() =>{{\n\t{}\n}}, [{}])",
+        "useEffect(() => {{\n\t{}\n}}, [{}])",
         {i(1), i(2)}
       )
     )

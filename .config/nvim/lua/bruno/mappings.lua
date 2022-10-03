@@ -82,7 +82,7 @@ local function set_keymaps()
 
   -- lsp
   map('n', '<leader>ee', '<cmd>:edit<cr>', opt)
-  map('n', '<leader>de', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opt)
+  map('n', '<leader>de', '<Cmd>lua vim.diagnostic.open_float()<CR>', opt)
   map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
   map('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
   map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)

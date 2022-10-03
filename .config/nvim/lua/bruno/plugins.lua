@@ -65,9 +65,7 @@ local function packer_start()
 
   -- colorschemes
   use 'rebelot/kanagawa.nvim'
-  use 'EdenEast/nightfox.nvim'
-  use 'sainnhe/everforest'
-  use 'shaunsingh/nord.nvim'
+  use 'olivercederborg/poimandres.nvim'
 
 end
 

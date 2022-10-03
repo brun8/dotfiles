@@ -148,3 +148,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 export PNPM_HOME="/home/bruno/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+# scripts
+export PATH="$HOME/cc/scripts:$PATH"
+
+fpath+=~/.zfunc
