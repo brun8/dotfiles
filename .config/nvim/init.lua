@@ -1,16 +1,6 @@
---local colorscheme_cmd = 'colo kanagawa'
---local success, err = pcall(vim.cmd, colorscheme_cmd)
---if not success then
-  --vim.api.nvim_err_writeln(err)
---end
-vim.api.nvim_command('colo kanagawa')
+require 'impatient'
 
---vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-  --pattern = '*.astro',
-  --callback = function ()
-    --vim.api.nvim_command('set filetype=astro')
-  --end
---})
+vim.api.nvim_command('colo kanagawa')
 
 -- seta o compilador g++ pra arquivos c++
 -- :make compila o arquivo e gera o excecutavel com o mesmo nome

@@ -26,6 +26,9 @@ local function packer_start()
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
 
+  --cache
+  use 'lewis6991/impatient.nvim'
+
   -- cmp
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
