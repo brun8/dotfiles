@@ -2,6 +2,8 @@ require 'impatient'
 
 vim.api.nvim_command('colo kanagawa')
 
+vim.api.nvim_create_user_command("W", "w", {})
+
 -- seta o compilador g++ pra arquivos c++
 -- :make compila o arquivo e gera o excecutavel com o mesmo nome
 vim.api.nvim_create_autocmd({'BufEnter'}, {
@@ -22,16 +24,16 @@ vim.cmd([[
 ]])
 
 
-vim.cmd([[
-  fun! TrimWhiteSpace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-  endfun
-  augroup WhiteSpace
-    autocmd!
-    autocmd BufWritePre * :call TrimWhiteSpace()
-  augroup END
-]])
+--vim.cmd([[
+  --fun! TrimWhiteSpace()
+    --let l:save = winsaveview()
+    --keeppatterns %s/\s\+$//e
+  --endfun
+  --augroup WhiteSpace
+    --autocmd!
+    --autocmd BufWritePre * :call TrimWhiteSpace()
+  --augroup END
+--]])
 
 -- compilar cpp
 --vim.cmd [[ autocmd filetype cpp nnoremap <leader>cpp :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR> ]]
