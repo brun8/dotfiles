@@ -47,7 +47,6 @@ local function packer_start()
   use 'nvim-telescope/telescope-symbols.nvim'
   use 'ThePrimeagen/git-worktree.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use "folke/todo-comments.nvim"
 
   -- harpoon
   use 'ThePrimeagen/harpoon'
@@ -64,7 +63,6 @@ local function packer_start()
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
-  use 'nvim-lualine/lualine.nvim'
 
   -- colorschemes
   use 'rebelot/kanagawa.nvim'
@@ -73,7 +71,6 @@ local function packer_start()
 end
 
 local function plugin_configs()
-
   local lsp_installer = require'nvim-lsp-installer'
 
   -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
@@ -92,29 +89,6 @@ local function plugin_configs()
     server:setup(opts)
   end)
 
-  require("lualine").setup {
-    options = {
-      theme = 'iceberg_dark',
-      sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_x = {''},
-        lualine_y = {''},
-        lualine_z = {''}
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
-        lualine_y = {},
-        lualine_z = {}
-      },
-    }
-  }
-
-  require("todo-comments").setup {}
-
   require("nvim-autopairs").setup {}
 
   require'harpoon'.setup {
@@ -123,12 +97,22 @@ local function plugin_configs()
     }
   }
 
-  --vim.g.user_emmet_leader_key = '<C-x>'
+  local rt = require("rust-tools")
+
+  rt.setup({
+    server = {
+      on_attach = function(_, bufnr)
+        -- Hover actions
+        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+      end,
+    },
+  })
 
 end
 
 packer_verify()
 packer_start()
 plugin_configs()
-
 

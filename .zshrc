@@ -152,3 +152,5 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/cc/scripts:$PATH"
 
 fpath+=~/.zfunc
+
+[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env

@@ -2,21 +2,21 @@ local ls = require'luasnip'
 local types = require'luasnip.util.types'
 
 ls.config.set_config({
-	history = true,
+  history = true,
 
-	updateevents = "TextChanged,TextChangedI",
+  updateevents = "TextChanged,TextChangedI",
 
-	delete_check_events = "TextChanged",
+  delete_check_events = "TextChanged",
 
-	ext_opts = {
-		[types.choiceNode] = {
-			active = {
-				virt_text = { { "choiceNode", "Comment" } },
-			},
-		},
-	},
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { "choiceNode", "Comment" } },
+      },
+    },
+  },
 
-	enable_autosnippets = true,
+  enable_autosnippets = true,
 })
 
 vim.keymap.set({"i", "s"}, "<c-k>", function()
