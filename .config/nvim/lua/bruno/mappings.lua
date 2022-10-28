@@ -82,13 +82,13 @@ local function set_keymaps()
 
   -- lsp
   map('n', '<leader>ee', '<cmd>:edit<cr>', opt)
-  map('n', '<leader>de', '<Cmd>lua vim.diagnostic.open_float()<CR>', opt)
-  map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-  map('n', '<leader>fm', '<Cmd>lua vim.lsp.buf.format()<CR>', opt)
-  map('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
-  map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-  map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
-  map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
+  --map('n', '<leader>de', '<Cmd>lua vim.diagnostic.open_float()<CR>', opt)
+  --map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+  --map('n', '<leader>fm', '<Cmd>lua vim.lsp.buf.format()<CR>', opt)
+  --map('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
+  --map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+  --map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+  --map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
 
   -- commentary
   map('v', '<leader>cc', '<Plug>complementary', opt)
