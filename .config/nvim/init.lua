@@ -1,9 +1,11 @@
 require 'impatient'
 
-local kanagawa = require 'kanagawa'
-if kanagawa then
-  vim.api.nvim_command('colo kanagawa')
-end
+--local kanagawa = require 'kanagawa'
+--if kanagawa then
+  --vim.api.nvim_command('colo kanagawa')
+--end
+
+vim.api.nvim_command('colo zenbones')
 
 vim.api.nvim_create_user_command("W", "w", {})
 
@@ -67,6 +69,7 @@ local options = {
   relativenumber = true,
   termguicolors = true,
   --cursorcolumn = true,
+  background = 'light',
   cc = '80',
   signcolumn = 'yes',
   wrap = false,
