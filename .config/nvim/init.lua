@@ -8,6 +8,7 @@ require 'impatient'
 vim.api.nvim_command('colo zenbones')
 
 vim.api.nvim_create_user_command("W", "w", {})
+vim.api.nvim_create_user_command("Wq", "wq", {})
 
 -- seta o compilador g++ pra arquivos c++
 -- :make compila o arquivo e gera o excecutavel com o mesmo nome
@@ -68,7 +69,7 @@ local options = {
   nu = true,
   relativenumber = true,
   termguicolors = true,
-  --cursorcolumn = true,
+  cursorcolumn = true,
   background = 'light',
   cc = '80',
   signcolumn = 'yes',
