@@ -109,11 +109,6 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
   },
-  everforest = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/everforest",
-    url = "https://github.com/sainnhe/everforest"
-  },
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
@@ -124,15 +119,20 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["impatient.nvim"] = {
+    loaded = true,
+    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
   ["kanagawa.nvim"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
     url = "https://github.com/rebelot/kanagawa.nvim"
   },
-  ["lualine.nvim"] = {
+  ["lush.nvim"] = {
     loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
+    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
@@ -143,16 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/preservim/nerdcommenter"
-  },
-  ["nightfox.nvim"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
-    url = "https://github.com/EdenEast/nightfox.nvim"
-  },
-  ["nord.nvim"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -214,11 +204,6 @@ _G.packer_plugins = {
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["todo-comments.nvim"] = {
-    loaded = true,
-    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
-    url = "https://github.com/folke/todo-comments.nvim"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -228,6 +213,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bruno/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["zenbones.nvim"] = {
+    loaded = true,
+    path = "/home/bruno/.local/share/nvim/site/pack/packer/start/zenbones.nvim",
+    url = "https://github.com/mcchrish/zenbones.nvim"
   }
 }
 

@@ -3,8 +3,10 @@ background                      #F0EDEC
 selection_foreground            #2C363C
 selection_background            #CBD9E3
 # Cursor colors
-cursor                          #2C363C
-cursor_text_color               #F0EDEC
+cursor                          #b0a69e
+#cursor                          #968d86
+cursor_text_color               #FAFAFA
+#cursor_text_color               #F0EDEC
 # URL underline color when hovering with mouse
 # kitty window border colors
 # OS Window titlebar colors

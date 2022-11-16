@@ -49,7 +49,6 @@ local o = vim.o
 g.mapleader = ' '
 
 local options = {
-
   filetype = true,
   backup = false,
   errorbells = false,
@@ -69,7 +68,7 @@ local options = {
   nu = true,
   relativenumber = true,
   termguicolors = true,
-  cursorcolumn = true,
+  --cursorcolumn = true,
   background = 'light',
   cc = '80',
   signcolumn = 'yes',
@@ -91,8 +90,6 @@ local options = {
 for k, v in pairs(options) do
   o[k] = v
 end
-
---vim.cmd [[set bg=light]]
 
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
