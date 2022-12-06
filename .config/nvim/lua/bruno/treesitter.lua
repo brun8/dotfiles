@@ -14,6 +14,18 @@ require 'nvim-treesitter.configs'.setup {
   },
 }
 
-local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
-ft_to_parser.astro = "tsx"
+--local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
+--ft_to_parser.astro = "tsx"
+
+require'nvim-treesitter.configs'.setup {
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = ".",
+      scope_incremental = "grc",
+      node_decremental = ",",
+    },
+  },
+}
 
