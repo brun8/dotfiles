@@ -36,19 +36,29 @@ end
 local function setup_lsp()
   local nvim_lsp = require'lspconfig'
 
-  local function default_on_attach(client)
-    --print('Attaching to ' .. client.name)
+  vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client.name == "gopls" then
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          callback = function()
+            vim.lsp.buf.format()
+          end,
+          pattern = "*.go"
+        })
+      end
 
-    --map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-    --map('n', '<leader>de', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opt)
-    --map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-    --map('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
-    --map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-    --map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
-    --map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
-    --map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-    --map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
-  end
+      vim.keymap.set('n', '<leader>ren', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
+      vim.keymap.set('n', '<leader>de', '<Cmd>lua vim.diagnostic.open_float()<CR>', opt)
+      vim.keymap.set('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
+      vim.keymap.set('n', '<leader>fm', '<Cmd>lua vim.lsp.buf.format()<CR>', opt)
+      vim.keymap.set('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
+      vim.keymap.set('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+      vim.keymap.set('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+      vim.keymap.set('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
+    end,
+  })
+
 
   local default_config = {
     on_attach = default_on_attach
@@ -56,10 +66,7 @@ local function setup_lsp()
 
   local servers = require'bruno.servers'
   for _, server in ipairs(servers) do
-    nvim_lsp[server].setup {
-      on_attach = function ()
-      end
-    }
+    nvim_lsp[server].setup {}
   end
 
   -- setup_sumneko()

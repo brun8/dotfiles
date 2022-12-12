@@ -63,6 +63,7 @@ local function packer_start()
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
+  use 'junegunn/goyo.vim'
 
   -- colorschemes
   use 'rebelot/kanagawa.nvim'
@@ -90,15 +91,6 @@ local function plugin_configs()
     -- before passing it onwards to lspconfig.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(opts)
-
-
-    vim.keymap.set('n', '<leader>de', '<Cmd>lua vim.diagnostic.open_float()<CR>', opt)
-    vim.keymap.set('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-    vim.keymap.set('n', '<leader>fm', '<Cmd>lua vim.lsp.buf.format()<CR>', opt)
-    vim.keymap.set('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
-    vim.keymap.set('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-    vim.keymap.set('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
-    vim.keymap.set('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
   end)
 
   require("nvim-autopairs").setup {}

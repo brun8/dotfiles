@@ -2,10 +2,16 @@ require 'impatient'
 
 --local kanagawa = require 'kanagawa'
 --if kanagawa then
+  --vim.o.background = "dark"
   --vim.api.nvim_command('colo kanagawa')
 --end
 
-vim.api.nvim_command('colo zenbones')
+local zenbones = require 'zenbones'
+if zenbones then
+  vim.o.background = "light"
+  vim.api.nvim_command('colo zenbones')
+end
+
 
 vim.api.nvim_create_user_command("W", "w", {})
 vim.api.nvim_create_user_command("Wq", "wq", {})
@@ -69,7 +75,6 @@ local options = {
   relativenumber = true,
   termguicolors = true,
   --cursorcolumn = true,
-  background = 'light',
   cc = '80',
   signcolumn = 'yes',
   wrap = false,
