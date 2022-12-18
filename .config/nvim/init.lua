@@ -1,16 +1,16 @@
 require 'impatient'
 
---local kanagawa = require 'kanagawa'
---if kanagawa then
-  --vim.o.background = "dark"
-  --vim.api.nvim_command('colo kanagawa')
---end
-
-local zenbones = require 'zenbones'
-if zenbones then
-  vim.o.background = "light"
-  vim.api.nvim_command('colo zenbones')
+local kanagawa = require 'kanagawa'
+if kanagawa then
+  vim.o.background = "dark"
+  vim.api.nvim_command('colo kanagawa')
 end
+
+--local zenbones = require 'zenbones'
+--if zenbones then
+  --vim.o.background = "light"
+  --vim.api.nvim_command('colo zenbones')
+--end
 
 
 vim.api.nvim_create_user_command("W", "w", {})

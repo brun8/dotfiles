@@ -95,12 +95,6 @@ local function plugin_configs()
 
   require("nvim-autopairs").setup {}
 
-  require'harpoon'.setup {
-    global_settings = {
-      enter_on_sendcmd = true,
-    }
-  }
-
 end
 
 packer_verify()
