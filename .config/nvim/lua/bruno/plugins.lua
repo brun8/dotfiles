@@ -55,12 +55,12 @@ local function packer_start()
   use 'ThePrimeagen/harpoon'
 
   -- treesitter
-  --use 'fatih/vim-go'
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
   use 'nvim-treesitter/playground'
 
   -- others
   use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
+  use 'mbbill/undotree'
   use 'preservim/nerdcommenter'
   use 'mattn/emmet-vim'
   use 'windwp/nvim-autopairs'
