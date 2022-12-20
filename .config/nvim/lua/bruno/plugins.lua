@@ -23,8 +23,11 @@ local function packer_start()
   use 'wbthomason/packer.nvim'
 
   -- lsp
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
 
   --cache
   use 'lewis6991/impatient.nvim'
@@ -75,29 +78,9 @@ local function packer_start()
 end
 
 local function plugin_configs()
-  local lsp_installer = require'nvim-lsp-installer'
-
-  -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
-  -- or if the server is already installed).
-  lsp_installer.on_server_ready(function(server)
-    local opts = {}
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-    -- before passing it onwards to lspconfig.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-  end)
-
   require("nvim-autopairs").setup {}
-
 end
 
-packer_verify()
 packer_start()
 plugin_configs()
 

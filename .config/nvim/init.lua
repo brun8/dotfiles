@@ -1,3 +1,7 @@
+if require "bruno.first_load"() then
+  return
+end
+
 require 'impatient'
 
 local kanagawa = require 'kanagawa'
