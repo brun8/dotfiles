@@ -92,11 +92,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-#source "/etc/profile.d/rvm.sh"
-
+# z
 source ~/programs/zsh-z/zsh-z.plugin.zsh
+fpath+=~/.zfunc
 
 # node
 export PATH=$PATH:/opt/node/bin
@@ -108,6 +106,20 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # editor
 export EDITOR="nvim"
+
+# haskell
+#[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
+
+
+# scala tp2
+# >>> JVM installed by coursier >>>
+export JAVA_HOME="/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10"
+export PATH="$PATH:/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10/bin"
+# <<< JVM installed by coursier <<<
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/bruno/.local/share/coursier/bin"
+# <<< coursier install directory <<<
 
 # lua language server
 export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
@@ -146,23 +158,11 @@ alias links="$EDITOR ~/.links.md"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 
+# pnpm
 export PNPM_HOME="/home/bruno/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # scripts
 #export PATH="$HOME/cc/scripts:$PATH"
 
-fpath+=~/.zfunc
 
-#[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
-
-
-# scala tp2
-# >>> JVM installed by coursier >>>
-export JAVA_HOME="/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10"
-export PATH="$PATH:/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10/bin"
-# <<< JVM installed by coursier <<<
-
-# >>> coursier install directory >>>
-export PATH="$PATH:/home/bruno/.local/share/coursier/bin"
-# <<< coursier install directory <<<
