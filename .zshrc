@@ -150,8 +150,19 @@ export PNPM_HOME="/home/bruno/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # scripts
-export PATH="$HOME/cc/scripts:$PATH"
+#export PATH="$HOME/cc/scripts:$PATH"
 
 fpath+=~/.zfunc
 
-[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
+#[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
+
+
+# scala tp2
+# >>> JVM installed by coursier >>>
+export JAVA_HOME="/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10"
+export PATH="$PATH:/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10/bin"
+# <<< JVM installed by coursier <<<
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/bruno/.local/share/coursier/bin"
+# <<< coursier install directory <<<
