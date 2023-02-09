@@ -52,7 +52,6 @@ local rep = require('luasnip.extras').rep
 ls.add_snippets(nil, {
   all = {
     s("pens", fmt("let's go pens", {})),
-    s("vamos", fmt("vamos cruzeiro", {})),
   },
   cpp = {
     s(

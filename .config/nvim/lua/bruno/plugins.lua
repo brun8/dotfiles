@@ -19,6 +19,9 @@ local function packer_start()
   local use = packer.use
   packer.reset()
 
+  -- scala
+  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+
   -- packer
   use 'wbthomason/packer.nvim'
 

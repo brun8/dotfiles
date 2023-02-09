@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "tsserver", "gopls" }
+    --ensure_installed = { "sumneko_lua", "tsserver", "gopls" }
 })
 
 require("mason-lspconfig").setup_handlers {
@@ -8,7 +8,9 @@ require("mason-lspconfig").setup_handlers {
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
   function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {}
+    require("lspconfig")[server_name].setup {
+      capabilities = require('cmp_nvim_lsp').default_capabilities()
+    }
   end,
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
@@ -17,9 +19,26 @@ require("mason-lspconfig").setup_handlers {
   --end
 }
 
+local function setup_scala()
+  local metals_config = require("metals").bare_config()
+  metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+  metals_config.on_attach = function()
+    print("metals attached")
+  end
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"scala", "sbt", "java"},
+    callback = function ()
+      require("metals").initialize_or_attach(metals_config)
+    end
+  })
+end
+
 local function setup_lsp()
   local aucmd = vim.api.nvim_create_autocmd
   local map = vim.keymap.set
+
+  setup_scala()
 
   aucmd('LspAttach', {
     callback = function(args)
