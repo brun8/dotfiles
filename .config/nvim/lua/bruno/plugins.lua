@@ -73,6 +73,7 @@ local function packer_start()
 
   -- colorschemes
   use 'rebelot/kanagawa.nvim'
+  use 'shaunsingh/nord.nvim'
   use {
     'mcchrish/zenbones.nvim',
     requires = "rktjmp/lush.nvim"

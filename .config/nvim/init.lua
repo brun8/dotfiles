@@ -2,19 +2,35 @@ if require "bruno.first_load"() then
   return
 end
 
+local colorscheme = "kanagawa"
+
 require 'impatient'
 
---local kanagawa = require 'kanagawa'
---if kanagawa then
-  --vim.o.background = "dark"
-  --vim.api.nvim_command('colo kanagawa')
---end
+local colorscheme_configs = {
+  kanagawa = function ()
+    local kanagawa = require 'kanagawa'
+    if kanagawa then
+      vim.o.background = "dark"
+      vim.api.nvim_command('colo kanagawa')
+    end
+  end,
+  zenbones = function ()
+    local zenbones = require 'zenbones'
+    if zenbones then
+      vim.o.background = "light"
+      vim.api.nvim_command('colo zenbones')
+    end
+  end,
+  nord = function ()
+    local nord = require 'nord'
+    if nord then
+      vim.o.background = "dark"
+      vim.api.nvim_command('colo nord')
+    end
+  end,
+}
 
-local zenbones = require 'zenbones'
-if zenbones then
-  vim.o.background = "light"
-  vim.api.nvim_command('colo zenbones')
-end
+colorscheme_configs[colorscheme]()
 
 
 vim.api.nvim_create_user_command("W", "w", {})

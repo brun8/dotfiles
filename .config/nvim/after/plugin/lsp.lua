@@ -43,14 +43,14 @@ local function setup_lsp()
   aucmd('LspAttach', {
     callback = function(args)
       local client = vim.lsp.get_client_by_id(args.data.client_id)
-      if client.name == "gopls" then
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          callback = function()
-            vim.lsp.buf.format()
-          end,
-          pattern = "*.go"
-        })
-      end
+      --if client.name == "gopls" then
+        --vim.api.nvim_create_autocmd('BufWritePre', {
+          --callback = function()
+            --vim.lsp.buf.format()
+          --end,
+          --pattern = "*.go"
+        --})
+      --end
 
       local opt = { silent = true, noremap = true }
 
