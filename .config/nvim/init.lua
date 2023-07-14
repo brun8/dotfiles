@@ -2,7 +2,7 @@ if require "bruno.first_load"() then
   return
 end
 
-local colorscheme = "kanagawa"
+local colorscheme = "kbones"
 
 require 'impatient'
 
@@ -21,11 +21,18 @@ local colorscheme_configs = {
       vim.api.nvim_command('colo zenbones')
     end
   end,
-  nord = function ()
-    local nord = require 'nord'
-    if nord then
+  darkbones = function ()
+    local zenbones = require 'zenbones'
+    if zenbones then
       vim.o.background = "dark"
-      vim.api.nvim_command('colo nord')
+      vim.api.nvim_command('colo zenbones')
+    end
+  end,
+  kbones = function ()
+    local zenbones = require 'zenbones'
+    if zenbones then
+      vim.o.background = "dark"
+      vim.api.nvim_command('colo kanagawabones')
     end
   end,
 }
@@ -75,7 +82,7 @@ local o = vim.o
 g.mapleader = ' '
 
 local options = {
-  filetype = true,
+  filetype = 'on',
   backup = false,
   errorbells = false,
   hidden = false,

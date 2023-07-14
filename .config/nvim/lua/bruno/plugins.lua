@@ -19,11 +19,11 @@ local function packer_start()
   local use = packer.use
   packer.reset()
 
-  -- scala
-  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
-
   -- packer
   use 'wbthomason/packer.nvim'
+
+  -- latex
+  use 'lervag/vimtex'
 
   -- lsp
   use {
@@ -73,12 +73,10 @@ local function packer_start()
 
   -- colorschemes
   use 'rebelot/kanagawa.nvim'
-  use 'shaunsingh/nord.nvim'
   use {
     'mcchrish/zenbones.nvim',
     requires = "rktjmp/lush.nvim"
-}
-
+  }
 end
 
 local function plugin_configs()

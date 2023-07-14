@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-    --ensure_installed = { "sumneko_lua", "tsserver", "gopls" }
+    ensure_installed = { "lua_ls", "tsserver", "gopls", "rust_analyzer" }
 })
 
 require("mason-lspconfig").setup_handlers {
@@ -19,26 +19,9 @@ require("mason-lspconfig").setup_handlers {
   --end
 }
 
-local function setup_scala()
-  local metals_config = require("metals").bare_config()
-  metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-  metals_config.on_attach = function()
-    print("metals attached")
-  end
-
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"scala", "sbt", "java"},
-    callback = function ()
-      require("metals").initialize_or_attach(metals_config)
-    end
-  })
-end
-
 local function setup_lsp()
   local aucmd = vim.api.nvim_create_autocmd
   local map = vim.keymap.set
-
-  setup_scala()
 
   aucmd('LspAttach', {
     callback = function(args)
@@ -56,11 +39,13 @@ local function setup_lsp()
 
       map('n', '<leader>de', '<Cmd>lua vim.diagnostic.open_float()<CR>', opt)
       map('n', '<leader>dd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opt)
-      map('n', '<leader>ref', '<Cmd>lua vim.lsp.buf.references()<CR>', opt)
+      map('n', '<leader>rf', '<Cmd>lua vim.lsp.buf.references()<CR>', opt)
       map('n', '<leader>fm', '<Cmd>lua vim.lsp.buf.format()<CR>', opt)
       map('n', '<leader>dc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opt)
       map('n', '<leader>di', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opt)
       map('n', '<leader>dh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+      map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opt)
+      map('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opt)
       map('n', '<leader>dr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opt)
     end,
   })

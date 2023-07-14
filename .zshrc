@@ -97,6 +97,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/programs/zsh-z/zsh-z.plugin.zsh
 fpath+=~/.zfunc
 
+export PATH=$PATH:$HOME/.local/bin
+
 # node
 export PATH=$PATH:/opt/node/bin
 
@@ -156,7 +158,7 @@ alias awconf="nvim ~/.config/awesome/rc.lua"
 alias unb="cd ~/cc/unb/"
 alias links="$EDITOR ~/.links.md"
 
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 
 # pnpm
@@ -168,4 +170,4 @@ export PATH="$PNPM_HOME:$PATH"
 
 
 
-[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
+#[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
