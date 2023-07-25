@@ -1,88 +1,185 @@
-local fn = vim.fn
-local function packer_verify()
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local M = {}
 
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd 'packadd packer.nvim'
-  end
+
+local function setup_comment()
+  require("Comment").setup {
+    -- LHS of operator-pending mapping in NORMAL + VISUAL mode
+    opleader = {
+      -- line-comment keymap
+      line = "gc",
+      -- block-comment keymap
+      block = "gb",
+    },
+
+    -- Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
+    mappings = {
+
+      -- operator-pending mapping
+      -- Includes:
+      --  `gcc`               -> line-comment  the current line
+      --  `gcb`               -> block-comment the current line
+      --  `gc[count]{motion}` -> line-comment  the region contained in {motion}
+      --  `gb[count]{motion}` -> block-comment the region contained in {motion}
+      basic = true,
+
+      -- extra mapping
+      -- Includes `gco`, `gcO`, `gcA`
+      extra = true,
+    },
+
+    -- LHS of toggle mapping in NORMAL + VISUAL mode
+    toggler = {
+      -- line-comment keymap
+      --  Makes sense to be related to your opleader.line
+      line = "gcc",
+
+      -- block-comment keymap
+      --  Make sense to be related to your opleader.block
+      block = "gbc",
+    },
+
+    -- Pre-hook, called before commenting the line
+    --    Can be used to determine the commentstring value
+    -- pre_hook = nil,
+
+    -- Post-hook, called after commenting is done
+    --    Can be used to alter any formatting / newlines / etc. after commenting
+    -- post_hook = nil,
+
+    -- Can be used to ignore certain lines when doing linewise motions.
+    --    Can be string (lua regex)
+    --    Or function (that returns lua regex)
+    -- ignore = nil,
+  }
+
+  local comment_ft = require "Comment.ft"
+  comment_ft.set("lua", { "--%s", "--[[%s]]" })
 end
 
-local function packer_start()
-  local packer = nil
+local function setup_treesitter()
+  require 'nvim-treesitter.configs'.setup({
+    ensure_installed = {
+      'vimdoc',
+      'python',
+      'go',
+      'rust',
+      'lua',
+      'typescript',
+      'tsx',
+      'javascript',
+      'json',
+    },
+    sync_install = false,
 
-  if packer == nil then
-    packer = require'packer'
-    packer.init()
-  end
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    },
 
-  local use = packer.use
-  packer.reset()
-
-  -- packer
-  use 'wbthomason/packer.nvim'
-
-  -- latex
-  use 'lervag/vimtex'
-
-  -- lsp
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  }
-
-  --cache
-  use 'lewis6991/impatient.nvim'
-
-  -- cmp
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-
-  -- snippets
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-
-  -- telescope
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-symbols.nvim'
-  use 'ThePrimeagen/git-worktree.nvim'
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  -- harpoon
-  use 'ThePrimeagen/harpoon'
-
-  -- treesitter
-  use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
-  use 'nvim-treesitter/playground'
-
-  -- others
-  use {'iamcco/markdown-preview.nvim', run = "cd app && yarn install"}
-  use 'mbbill/undotree'
-  use 'preservim/nerdcommenter'
-  use 'mattn/emmet-vim'
-  use 'windwp/nvim-autopairs'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
-  use 'junegunn/goyo.vim'
-
-  -- colorschemes
-  use 'rebelot/kanagawa.nvim'
-  use {
-    'mcchrish/zenbones.nvim',
-    requires = "rktjmp/lush.nvim"
-  }
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = ".",
+        scope_incremental = "grc",
+        node_decremental = ",",
+      },
+    },
+  })
 end
 
 local function plugin_configs()
   require("nvim-autopairs").setup {}
 end
 
-packer_start()
-plugin_configs()
+local function lazy_install()
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      lazypath,
+    })
+  end
+  vim.opt.rtp:prepend(lazypath)
+end
 
+local function lazy_start()
+  require("lazy").setup({
+    -- mason
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+
+    --cache
+    'lewis6991/impatient.nvim',
+
+    -- cmp
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+
+    -- snippets
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+
+    -- telescope
+    'nvim-lua/popup.nvim',
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope-symbols.nvim',
+    'ThePrimeagen/git-worktree.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+
+    -- harpoon
+    'ThePrimeagen/harpoon',
+
+    -- treesitter
+    {
+      'nvim-treesitter/nvim-treesitter',
+      build = 'TSUpdate',
+      config = setup_treesitter
+    },
+    'nvim-treesitter/playground',
+
+    -- others
+    {
+      'iamcco/markdown-preview.nvim',
+      run = "cd app && yarn install"
+    },
+    {
+      'numToStr/Comment.nvim',
+      config = setup_comment
+    },
+    'mbbill/undotree',
+    'mattn/emmet-vim',
+    'windwp/nvim-autopairs',
+    'tpope/vim-surround',
+    'tpope/vim-fugitive',
+    'junegunn/goyo.vim',
+
+    -- colorschemes
+    'rebelot/kanagawa.nvim',
+    {
+      'mcchrish/zenbones.nvim',
+      dependencies = "rktjmp/lush.nvim"
+    },
+
+  })
+end
+
+M.setup = function()
+  lazy_install()
+  lazy_start()
+  plugin_configs()
+end
+
+return M
+
+--lazy_install()
+--lazy_start()

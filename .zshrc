@@ -110,23 +110,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # editor
 export EDITOR="nvim"
 
-# haskell
-#[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env
-
-
-# scala tp2
-# >>> JVM installed by coursier >>>
-export JAVA_HOME="/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10"
-export PATH="$PATH:/home/bruno/.cache/coursier/arc/https/github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz/jdk8u292-b10/bin"
-# <<< JVM installed by coursier <<<
-
-# >>> coursier install directory >>>
-export PATH="$PATH:/home/bruno/.local/share/coursier/bin"
-# <<< coursier install directory <<<
-
-# lua language server
-export PATH="$HOME/tools/lua-language-server/bin/Linux:$PATH"
-alias luamake=/home/bruno/tools/lua-language-server/3rd/luamake/luamake
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -168,6 +151,3 @@ export PATH="$PNPM_HOME:$PATH"
 # scripts
 #export PATH="$HOME/cc/scripts:$PATH"
 
-
-
-#[ -f "/home/bruno/.ghcup/env" ] && source "/home/bruno/.ghcup/env" # ghcup-env

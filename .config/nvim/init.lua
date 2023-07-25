@@ -1,34 +1,31 @@
-if require "bruno.first_load"() then
-  return
-end
-
-local colorscheme = "kbones"
+require 'bruno.plugins'.setup()
 
 require 'impatient'
 
+local colorscheme = "kbones"
 local colorscheme_configs = {
-  kanagawa = function ()
+  kanagawa = function()
     local kanagawa = require 'kanagawa'
     if kanagawa then
       vim.o.background = "dark"
       vim.api.nvim_command('colo kanagawa')
     end
   end,
-  zenbones = function ()
+  zenbones = function()
     local zenbones = require 'zenbones'
     if zenbones then
       vim.o.background = "light"
       vim.api.nvim_command('colo zenbones')
     end
   end,
-  darkbones = function ()
+  darkbones = function()
     local zenbones = require 'zenbones'
     if zenbones then
       vim.o.background = "dark"
       vim.api.nvim_command('colo zenbones')
     end
   end,
-  kbones = function ()
+  kbones = function()
     local zenbones = require 'zenbones'
     if zenbones then
       vim.o.background = "dark"
@@ -46,12 +43,12 @@ vim.api.nvim_create_user_command("Wq", "wq", {})
 -- seta o compilador g++ pra arquivos c++
 -- :make compila o arquivo e gera o excecutavel com o mesmo nome
 --vim.api.nvim_create_autocmd({'BufEnter'}, {
-  --pattern = "*.cpp",
-  --callback = function ()
-    --vim.api.nvim_command("set makeprg=g++\\ %\\ -o\\ %<")
-    ----vim.api.nvim_command("set makeprg=pctest\\ %")
-    --vim.api.nvim_set_keymap('n', '<leader>cpp', '<cmd>make<cr>', {silent=true})
-  --end
+--pattern = "*.cpp",
+--callback = function ()
+--vim.api.nvim_command("set makeprg=g++\\ %\\ -o\\ %<")
+----vim.api.nvim_command("set makeprg=pctest\\ %")
+--vim.api.nvim_set_keymap('n', '<leader>cpp', '<cmd>make<cr>', {silent=true})
+--end
 --})
 
 --commands
@@ -64,14 +61,14 @@ vim.cmd([[
 
 
 --vim.cmd([[
-  --fun! TrimWhiteSpace()
-    --let l:save = winsaveview()
-    --keeppatterns %s/\s\+$//e
-  --endfun
-  --augroup WhiteSpace
-    --autocmd!
-    --autocmd BufWritePre * :call TrimWhiteSpace()
-  --augroup END
+--fun! TrimWhiteSpace()
+--let l:save = winsaveview()
+--keeppatterns %s/\s\+$//e
+--endfun
+--augroup WhiteSpace
+--autocmd!
+--autocmd BufWritePre * :call TrimWhiteSpace()
+--augroup END
 --]])
 
 
@@ -128,4 +125,4 @@ end
 
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
-require'bruno'
+require 'bruno'
