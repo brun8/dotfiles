@@ -1,6 +1,5 @@
 local M = {}
 
-
 local function setup_comment()
   require("Comment").setup {
     -- LHS of operator-pending mapping in NORMAL + VISUAL mode
@@ -142,7 +141,7 @@ local function lazy_start()
     -- treesitter
     {
       'nvim-treesitter/nvim-treesitter',
-      build = 'TSUpdate',
+      build = ':TSUpdate',
       config = setup_treesitter
     },
     'nvim-treesitter/playground',
@@ -156,6 +155,7 @@ local function lazy_start()
       'numToStr/Comment.nvim',
       config = setup_comment
     },
+
     'mbbill/undotree',
     'mattn/emmet-vim',
     'windwp/nvim-autopairs',

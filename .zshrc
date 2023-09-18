@@ -151,3 +151,10 @@ export PATH="$PNPM_HOME:$PATH"
 # scripts
 #export PATH="$HOME/cc/scripts:$PATH"
 
+
+# bun completions
+[ -s "/home/bruno/.bun/_bun" ] && source "/home/bruno/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

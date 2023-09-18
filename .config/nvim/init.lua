@@ -1,8 +1,11 @@
+vim.g.mapleader = ' '
+
 require 'bruno.plugins'.setup()
 
 require 'impatient'
 
-local colorscheme = "kbones"
+local colorscheme = "darkbones"
+
 local colorscheme_configs = {
   kanagawa = function()
     local kanagawa = require 'kanagawa'
@@ -59,6 +62,17 @@ vim.cmd([[
   augroup END
 ]])
 
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("BufHidden", {
+  desc = "Delete [No Name] buffers",
+  callback = function(event)
+    if event.file == "" and vim.bo[event.buf].buftype == "" and not vim.bo[event.buf].modified then
+      vim.schedule(function() pcall(vim.api.nvim_buf_delete, event.buf, {}) end)
+    end
+  end,
+})
+
 
 --vim.cmd([[
 --fun! TrimWhiteSpace()
@@ -76,7 +90,6 @@ vim.cmd([[
 local g = vim.g
 local o = vim.o
 
-g.mapleader = ' '
 
 local options = {
   filetype = 'on',

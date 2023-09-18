@@ -19,7 +19,10 @@ local function set_keymaps()
   map('v', '<leader>P', '"+P', opt)
 
   -- netrw
-  map('n', '<leader>nn', '<CMD>Explore<CR>', opt)
+  map('n', '<leader>nn', '<cmd>:Ex<cr>', opt)
+  -- map('n', '<leader>nn', function ()
+  --   require('oil').open()
+  -- end, opt)
 
   -- vim surround
   -- muda ' para "
