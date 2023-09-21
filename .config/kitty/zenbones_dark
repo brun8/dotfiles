@@ -17,7 +17,7 @@ cursor_text_color               #1C1917
 # OS Window titlebar colors
 # Tab bar colors
 active_tab_foreground           #B4BDC3
-active_tab_background           #65435E
+active_tab_background           #65435e
 inactive_tab_foreground         #B4BDC3
 inactive_tab_background         #352F2D
 # Colors for marks (marked text in the terminal)
