@@ -145,6 +145,7 @@ local function lazy_start()
       config = setup_treesitter
     },
     'nvim-treesitter/playground',
+    'nvim-treesitter/nvim-treesitter-context',
 
     -- others
     {
@@ -162,8 +163,18 @@ local function lazy_start()
     'tpope/vim-surround',
     'tpope/vim-fugitive',
     'junegunn/goyo.vim',
+    {
+      'norcalli/nvim-colorizer.lua',
+      config = function()
+        vim.cmd [[ set termguicolors ]]
+        require 'colorizer'.setup()
+      end,
+    },
 
     -- colorschemes
+    {
+      'rktjmp/lush.nvim'
+    },
     'rebelot/kanagawa.nvim',
     {
       'mcchrish/zenbones.nvim',

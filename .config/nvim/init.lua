@@ -4,7 +4,7 @@ require 'bruno.plugins'.setup()
 
 require 'impatient'
 
-local colorscheme = "darkbones"
+local colorscheme = "kbones"
 
 local colorscheme_configs = {
   kanagawa = function()
