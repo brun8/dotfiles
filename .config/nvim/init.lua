@@ -45,14 +45,14 @@ vim.api.nvim_create_user_command("Wq", "wq", {})
 
 -- seta o compilador g++ pra arquivos c++
 -- :make compila o arquivo e gera o excecutavel com o mesmo nome
---vim.api.nvim_create_autocmd({'BufEnter'}, {
---pattern = "*.cpp",
---callback = function ()
---vim.api.nvim_command("set makeprg=g++\\ %\\ -o\\ %<")
-----vim.api.nvim_command("set makeprg=pctest\\ %")
---vim.api.nvim_set_keymap('n', '<leader>cpp', '<cmd>make<cr>', {silent=true})
---end
---})
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  pattern = "*.cpp",
+  callback = function()
+    vim.api.nvim_command("set makeprg=g++\\ %\\ -o\\ %<")
+    --vim.api.nvim_command("set makeprg=pctest\\ %")
+    vim.api.nvim_set_keymap('n', '<leader>cpp', '<cmd>make<cr>', { silent = true })
+  end
+})
 
 --commands
 vim.cmd([[
