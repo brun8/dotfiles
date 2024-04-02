@@ -2,4 +2,11 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  {
+    'mattn/emmet-vim',
+    init = function()
+      vim.g['user_emmet_leader_key'] = '<C-e>'
+    end,
+  },
+}
