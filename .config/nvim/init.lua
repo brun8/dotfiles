@@ -35,7 +35,7 @@ vim.opt.breakindent = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 -- Save undo history
@@ -238,6 +238,7 @@ require('lazy').setup({
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
+      'xiyaowong/telescope-emoji.nvim',
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
@@ -278,12 +279,19 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          ['emoji'] = {
+            action = function(emoji)
+              -- insert emoji when picked
+              vim.api.nvim_put({ emoji.value }, 'c', false, true)
+            end,
+          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'emoji')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -298,6 +306,18 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      vim.keymap.set('n', '<C-\\>', function()
+        builtin.find_files {
+          prompt_title = ' nvim ',
+          hidden = true,
+          cwd = '~/.config/nvim',
+        }
+      end, {
+        desc = '[ ] Find in dotfiles',
+      })
+
+      vim.keymap.set('i', '<C-\\>', '<cmd>Telescope emoji<cr>', { desc = '[ ] Find emoji' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -416,7 +436,7 @@ require('lazy').setup({
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
           -- Format code using LSP
-          map('<leader>ca', vim.lsp.buf.format, '[F]ormat')
+          map('<leader>fm', vim.lsp.buf.format, '[F]ormat')
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
@@ -660,7 +680,8 @@ require('lazy').setup({
     dependencies = 'rktjmp/lush.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      vim.cmd.colorscheme 'kanagawabones'
+      vim.o.background = 'light'
+      vim.cmd.colorscheme 'zenbones'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'

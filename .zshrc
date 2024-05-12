@@ -165,3 +165,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 # oclint
 export PATH="/opt/oclint/bin:$PATH"
 
+
+# Turso
+export PATH="/home/bruno/.turso:$PATH"
