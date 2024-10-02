@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' '
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 
 -- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -77,6 +77,7 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 vim.keymap.set('n', '<leader>nn', '<cmd>:Ex<CR>', { desc = '[N]avigate' })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y] to clipboard' })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -564,7 +565,7 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettier', 'prettierd' } },
       },
     },
   },
@@ -680,9 +681,13 @@ require('lazy').setup({
     dependencies = 'rktjmp/lush.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      vim.o.background = 'light'
-      vim.cmd.colorscheme 'zenbones'
-      -- vim.cmd.colorscheme 'kanagawabones'
+      if os.getenv 'theme' == 'dark' then
+        vim.o.background = 'dark'
+        vim.cmd.colorscheme 'kanagawabones'
+      else
+        vim.o.background = 'light'
+        vim.cmd.colorscheme 'zenbones'
+      end
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -744,6 +749,15 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = 'gnn',
+          node_incremental = '.',
+          scope_incremental = 'grc',
+          node_decremental = ',',
+        },
+      },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`

@@ -70,9 +70,9 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-		git
-    golang
-	)
+  git
+  golang
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,11 +118,10 @@ export EDITOR="nvim"
 #
 # Example aliases
 alias zshconfig="vi ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ohmyzsh="vi ~/.oh-my-zsh"
 
 # ALIASES
 
-#alias rm=trash
 alias vi=nvim
 alias nvi=nvim
 alias python=python3
@@ -130,41 +129,61 @@ alias pytohn=python
 alias brave=brave-browser
 alias gg=lazygit
 alias path="echo $PATH | sed 's/:/\n/g'"
+alias ee=exa
 
 alias sourcez="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
-alias hyperconfig="vim ~/.hyper.js"
 alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias nvimdir="cd ~/.config/nvim/"
 alias awconf="nvim ~/.config/awesome/rc.lua"
 alias unb="cd ~/cc/unb/"
 alias links="$EDITOR ~/.links.md"
-
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-
 
 # pnpm
 export PNPM_HOME="/home/bruno/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # scripts
-#export PATH="$HOME/cc/scripts:$PATH"
-
-
-# bun completions
-[ -s "/home/bruno/.bun/_bun" ] && source "/home/bruno/.bun/_bun"
+# export PATH="$HOME/cc/scripts:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# bun completions
+[ -s "/home/bruno/.bun/_bun" ] && source "/home/bruno/.bun/_bun"
+
 # brew
 export PATH="/opt/homebrew/bin:$PATH"
 
-# oclint
-export PATH="/opt/oclint/bin:$PATH"
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Aws
+export DEV_NAME=bruno
+export AWS_REGION="us-east-1"
+
+# theme
+export theme="dark"
+# kitty @ set-colors -a ~/.config/kitty/kanagawabones.conf
+function light() {
+  export theme="light"
+  kitty @ set-colors -a ~/.config/kitty/zenbones_light.conf
+}
+
+function switch_theme_based_on_time() {
+  local hour=$(date +"%H")
+
+  if (( hour <= 18 && hour > 7 )); then
+    light
+  fi
+}
+
+switch_theme_based_on_time
+# end theme
 
 
-# Turso
-export PATH="/home/bruno/.turso:$PATH"
