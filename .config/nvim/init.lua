@@ -76,9 +76,6 @@ vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-vim.keymap.set('n', '<leader>nn', '<cmd>:Ex<CR>', { desc = '[N]avigate' })
-vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y] to clipboard' })
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

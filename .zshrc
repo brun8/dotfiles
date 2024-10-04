@@ -168,17 +168,25 @@ export DEV_NAME=bruno
 export AWS_REGION="us-east-1"
 
 # theme
-export theme="dark"
-# kitty @ set-colors -a ~/.config/kitty/kanagawabones.conf
+
 function light() {
   export theme="light"
   kitty @ set-colors -a ~/.config/kitty/zenbones_light.conf
 }
 
+export theme="dark"
+kitty @ set-colors -a ~/.config/kitty/kanagawabones.conf
+function dark() {
+  export theme="dark"
+kitty @ set-colors -a ~/.config/kitty/kanagawabones.conf
+}
+
 function switch_theme_based_on_time() {
   local hour=$(date +"%H")
 
-  if (( hour <= 18 && hour > 7 )); then
+  if (( hour > 18 && hour < 7 )); then
+    dark
+  else
     light
   fi
 }
