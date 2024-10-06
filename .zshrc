@@ -131,6 +131,9 @@ alias gg=lazygit
 alias path="echo $PATH | sed 's/:/\n/g'"
 alias ee=exa
 
+## dotfiles
+alias "configsave"="dotfiles add -u && dotfiles commit"
+
 alias sourcez="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias nvimconfig="nvim ~/.config/nvim/init.lua"
@@ -168,30 +171,5 @@ export DEV_NAME=bruno
 export AWS_REGION="us-east-1"
 
 # theme
-
-function light() {
-  export theme="light"
-  kitty @ set-colors -a ~/.config/kitty/zenbones_light.conf
-}
-
 export theme="dark"
-kitty @ set-colors -a ~/.config/kitty/kanagawabones.conf
-function dark() {
-  export theme="dark"
-kitty @ set-colors -a ~/.config/kitty/kanagawabones.conf
-}
-
-function switch_theme_based_on_time() {
-  local hour=$(date +"%H")
-
-  if (( hour > 18 && hour < 7 )); then
-    dark
-  else
-    light
-  fi
-}
-
-switch_theme_based_on_time
-# end theme
-
 
