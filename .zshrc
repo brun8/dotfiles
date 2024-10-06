@@ -132,7 +132,7 @@ alias path="echo $PATH | sed 's/:/\n/g'"
 alias ee=exa
 
 ## dotfiles
-alias dotsave="dotfiles add -u && dotfiles commit -m (date -I) && dotfiles push"
+alias dotsave="dotfiles add -u && dotfiles commit -m $(date -I) && dotfiles push"
 
 alias sourcez="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
@@ -172,4 +172,3 @@ export AWS_REGION="us-east-1"
 
 # theme
 export theme="dark"
-
