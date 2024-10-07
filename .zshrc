@@ -162,9 +162,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Aws
 export DEV_NAME=bruno
@@ -172,3 +172,17 @@ export AWS_REGION="us-east-1"
 
 # theme
 export theme="dark"
+
+# mac
+
+# node18
+export PATH="/opt/node18/bin:$PATH"
+# alias node=node18
+
+# nvim mac
+export PATH="/opt/nvim/bin:$PATH"
+
+# brew
+export PATH="/opt/homebrew/bin:$PATH"
+# end mac
+
