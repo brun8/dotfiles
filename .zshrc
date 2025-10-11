@@ -1,5 +1,4 @@
 # Gladys If you come from bash you might have to change your $PATH.
-
 export TMP="/tmp"
 
 # Path to your oh-my-zsh installation.
@@ -130,6 +129,8 @@ alias brave=brave-browser
 alias gg=lazygit
 alias path="echo $PATH | sed 's/:/\n/g'"
 alias ee=exa
+alias oc=opencode
+
 
 ## dotfiles
 alias dotsave="dotfiles add -u && dotfiles commit -m $(date -I) && dotfiles push"
@@ -148,6 +149,9 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 export PNPM_HOME="/home/bruno/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+# ghostty
+export PATH="$HOME/programs/ghostty/zig-out/bin/:$PATH"
+
 # scripts
 # export PATH="$HOME/cc/scripts:$PATH"
 
@@ -161,6 +165,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # brew
 export PATH="/opt/homebrew/bin:$PATH"
 
+# brew
+export PATH="/opt/jre1.8.0_451/bin:$PATH"
+
+# bitcoin
+export PATH="/opt/bitcoin/bin:$PATH"
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -168,7 +178,18 @@ export NVM_DIR="$HOME/.nvm"
 
 # Aws
 export DEV_NAME=bruno
-export AWS_REGION="us-east-1"
+export AWS_REGION=us-east-1
 
 # theme
 export theme="dark"
+# if [ $theme = "dark" ]; then
+#   echo "aqui"
+#   export KITTY_THEME="kanagawabones.conf"
+# else
+#   echo "zenbones"
+#   export KITTY_THEME="zenbones_light.conf"
+# fi
+
+
+# opencode
+export PATH=/home/bruno/.opencode/bin:$PATH

@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  -- emmet
   {
     'mattn/emmet-vim',
     init = function()
@@ -27,4 +28,23 @@ return {
       vim.keymap.set('n', '<leader>gb', '<cmd>GitBlameToggle<cr>', { desc = '[S]earch [H]elp' })
     end,
   },
+
+  -- git conflict
+  -- {
+  --   'akinsho/git-conflict.nvim',
+  --   version = '*',
+  --   config = true,
+  --   init = function()
+  --     vim.api.nvim_create_autocmd('User', {
+  --       pattern = 'GitConflictDetected',
+  --       callback = function()
+  --         vim.notify('Conflict detected in ' .. vim.fn.expand '<afile>')
+  --         vim.keymap.set('n', 'cww', function()
+  --           engage.conflict_buster()
+  --           create_buffer_local_mappings()
+  --         end)
+  --       end,
+  --     })
+  --   end,
+  -- },
 }
