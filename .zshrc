@@ -145,10 +145,6 @@ alias unb="cd ~/cc/unb/"
 alias links="$EDITOR ~/.links.md"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
-# pnpm
-export PNPM_HOME="/home/bruno/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
 # ghostty
 export PATH="$HOME/programs/ghostty/zig-out/bin/:$PATH"
 
@@ -193,3 +189,11 @@ export theme="dark"
 
 # opencode
 export PATH=/home/bruno/.opencode/bin:$PATH
+
+# pnpm
+export PNPM_HOME="/home/bruno/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
