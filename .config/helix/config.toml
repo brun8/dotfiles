@@ -1,0 +1,29 @@
+theme = "amberwood"
+
+[editor]
+line-number = "relative"
+
+[keys.normal]
+C-c = "normal_mode"
+# space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+
+[keys.normal.g]
+c = "toggle_comments"
+u = "switch_to_lowercase"
+U = "switch_to_uppercase"
+
+[keys.insert]
+C-c = "normal_mode"
+
+[keys.select]
+C-c = "normal_mode"
+
+[keys.select.g]
+u = "switch_to_lowercase"
+U = "switch_to_uppercase"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
