@@ -1,0 +1,11 @@
+[language-server.emmet-ls]
+command = "emmet-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "emmet-ls"]
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "emmet-ls"]
