@@ -23,10 +23,10 @@
 
 set number
 set rnu
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=0
 set expandtab
-set softtabstop=4
+set softtabstop=2
 set smartindent
 set backspace=2
 set background=dark
