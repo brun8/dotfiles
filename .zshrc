@@ -190,8 +190,11 @@ export theme="dark"
 # opencode
 export PATH=/home/bruno/.opencode/bin:$PATH
 
+# nvim mac
+export PATH=/opt/nvim/bin:$PATH
+
 # pnpm
-export PNPM_HOME="/home/bruno/.local/share/pnpm"
+export PNPM_HOME="/Users/bruno/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
