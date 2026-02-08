@@ -1,0 +1,7 @@
+font-family = "MonoLisa Custom"
+font-size = 14
+window-save-state = always
+macos-option-as-alt = false
+theme = Kanagawa Dragon
+keybind = ctrl+shift+j=previous_tab
+keybind = ctrl+shift+k=next_tab
